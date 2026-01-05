@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPU vs GPU vs NPU 核心架构解析</title>
+    <title>摩尔线程大会精炼分享</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
             /* Decorative angled corners */
             clip-path: polygon(8px 0, 100% 0,
@@ -152,12 +152,15 @@
 
         .music-toggle:hover {
             background: #222;
-            color: #777;
+            color: #fff;
+            border-color: #555;
             transform: translate(-1px, -1px);
             box-shadow:
-                inset 1px 1px 0px rgba(255, 255, 255, 0.1),
+                inset 1px 1px 0px rgba(255, 255, 255, 0.2),
                 inset -1px -1px 0px rgba(0, 0, 0, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.1),
                 5px 5px 0px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         .music-toggle:active {
@@ -236,7 +239,7 @@
         /* Navigation Menu */
         .nav-menu-container {
             position: fixed;
-            top: 20px;
+            top: 25px;
             left: 20px;
             z-index: 2000;
             /* Higher than everything */
@@ -284,7 +287,7 @@
                 0 0 10px rgba(255, 193, 7, 0.3),
                 inset 0 0 20px rgba(255, 193, 7, 0.1);
             text-shadow: 0 0 5px var(--accent-amber);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2003;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
             /* Cut corner */
@@ -307,12 +310,15 @@
         }
 
         .nav-toggle:hover {
-            background: rgba(255, 193, 7, 0.2);
-            box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
-            padding-left: 25px;
+            background: rgba(255, 193, 7, 0.25);
+            box-shadow:
+                0 0 20px rgba(255, 193, 7, 0.5),
+                inset 0 0 15px rgba(255, 193, 7, 0.3);
+            padding-left: 24px;
             /* Mechanical slide effect */
-            text-shadow: 0 0 8px var(--accent-amber), 0 0 15px #fff;
-            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--accent-amber), 0 0 20px #fff;
+            letter-spacing: 4px;
+            border-color: #fff;
         }
 
         .nav-toggle:active {
@@ -432,6 +438,8 @@
             background: var(--bg-color);
             z-index: 1;
             opacity: 0;
+            border-top: 6px solid var(--accent-amber);
+            box-sizing: border-box;
             transition: opacity 0.5s ease-in-out;
         }
 
@@ -2595,43 +2603,36 @@
             transform: scale(1);
             /* Disable hover move effect in slide mode */
             box-shadow: none;
-            border-color: #444;
         }
 
         /* Cassette Futurism Color Schemes */
         /* 1. Overview - Retro Amber/Brown */
         section:nth-of-type(1) {
-            border-top: 6px solid var(--accent-amber);
             background: linear-gradient(160deg, #2a2520 0%, #1a1a1a 100%);
         }
 
         /* 2. 3D Intro - Retro Orange */
         section:nth-of-type(2) {
-            border-top: 6px solid #ffb000;
             background: linear-gradient(160deg, #2a2010 0%, #1a1a1a 100%);
         }
 
         /* 3. CPU - Retro Cyan/Slate */
         section:nth-of-type(3) {
-            border-top: 6px solid var(--accent-cyan);
             background: linear-gradient(160deg, #1a2a2a 0%, #1a1a1a 100%);
         }
 
         /* 4. GPU - Retro Red/Maroon */
         section:nth-of-type(4) {
-            border-top: 6px solid var(--accent-red);
             background: linear-gradient(160deg, #2a1a1a 0%, #1a1a1a 100%);
         }
 
         /* 5. NPU - Retro Green/Olive */
         section:nth-of-type(5) {
-            border-top: 6px solid var(--accent-green);
             background: linear-gradient(160deg, #1a2a1a 0%, #1a1a1a 100%);
         }
 
         /* 6. Comparison - Retro Grey/Purple */
         section:nth-of-type(6) {
-            border-top: 6px solid #a0a0a0;
             background: linear-gradient(160deg, #252525 0%, #151515 100%);
         }
 
@@ -4431,8 +4432,15 @@
         }
 
         @keyframes deep-pulse {
-            0%, 100% { background-color: #020202; }
-            50% { background-color: #080a10; }
+
+            0%,
+            100% {
+                background-color: #020202;
+            }
+
+            50% {
+                background-color: #080a10;
+            }
         }
 
         /* Strong Cassette Futurism: Rising Data Particles */
@@ -4443,7 +4451,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 radial-gradient(2px 2px at 20px 30px, rgba(0, 255, 255, 0.8), transparent),
                 radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.9), transparent),
                 radial-gradient(2px 2px at 50px 160px, rgba(255, 0, 255, 0.8), transparent),
@@ -4464,13 +4472,13 @@
             left: 0;
             bottom: 0;
             right: 0;
-            background: 
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+            background:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
                 radial-gradient(circle at center, transparent 50%, #000 100%);
             z-index: 2;
             background-size: 100% 4px, 100% 100%;
             pointer-events: none;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
         }
 
         /* Bolder Retro Section Styling */
@@ -4520,7 +4528,7 @@
             background: #444;
             border: 2px solid #111;
             border-radius: 0;
-            box-shadow: inset 1px 1px 0 rgba(255,255,255,0.1);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -4538,6 +4546,7 @@
             0% {
                 background-position: 0 200px;
             }
+
             100% {
                 background-position: 0 0;
             }
@@ -6451,7 +6460,7 @@
 
     <!-- Music Controls Container -->
     <div class="music-controls-container"
-        style="position: fixed; top: 20px; right: 20px; z-index: 10000; display: flex; gap: 10px;">
+        style="position: fixed; top: 25px; right: 20px; z-index: 10000; display: flex; gap: 10px;">
         <!-- Music Toggle Switch -->
         <div class="music-toggle" id="music-toggle" style="position: relative; top: auto; right: auto; margin: 0;">
             <span id="music-icon">🔇</span> <span id="music-text">BGM: OFF</span>
@@ -16621,6 +16630,44 @@
 
         // Start the glitch loop
         scheduleNextGlitch();
+
+        // --- Nav Toggle Hover Glitch Effect ---
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navToggle) {
+            // Store original text, trimming whitespace just in case, though innerText usually is fine
+            // But here we want to preserve the exact spacing "/// 导航目录 ///"
+            const originalNavText = "/// 导航目录 ///";
+            const navChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+<>/";
+
+            navToggle.addEventListener('mouseenter', () => {
+                let iterations = 0;
+                // Clear any existing interval to prevent overlap if hovered quickly
+                if (navToggle.dataset.interval) clearInterval(parseInt(navToggle.dataset.interval));
+
+                const interval = setInterval(() => {
+                    navToggle.innerText = originalNavText.split("")
+                        .map((letter, index) => {
+                            // Keep spaces as spaces for better readability during glitch
+                            if (letter === " ") return " ";
+
+                            if (index < iterations) {
+                                return originalNavText[index];
+                            }
+                            return navChars[Math.floor(Math.random() * navChars.length)];
+                        })
+                        .join("");
+
+                    if (iterations >= originalNavText.length) {
+                        clearInterval(interval);
+                        navToggle.innerText = originalNavText;
+                    }
+
+                    iterations += 1 / 2; // Speed of decoding
+                }, 30);
+
+                navToggle.dataset.interval = interval;
+            });
+        }
 
     </script>
 </body>
