@@ -113,7 +113,7 @@
 
         body {
             font-family: 'VT323', 'Courier New', 'Microsoft YaHei', monospace;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             line-height: 1.6;
             color: var(--text-main);
             text-shadow: 0 0 3px rgba(0, 255, 255, 0.4);
@@ -347,17 +347,18 @@
         }
 
         .slide-header {
-            height: 50px;
+            height: 60px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #333;
-            margin-bottom: 10px;
+            margin-bottom: 35px;
+            padding-top: 20px;
             flex-shrink: 0;
         }
 
         .slide-header h2 {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--accent-cyan);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -937,7 +938,7 @@
             border-radius: 16px;
             background: #000;
             width: 90%;
-            max-width: 800px;
+            max-width: 1300px;
             box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
         }
 
@@ -2625,7 +2626,7 @@
             align-items: center;
             /* Center vertically */
             width: 100%;
-            max-width: 1400px;
+            max-width: 1900px;
         }
 
         section:hover {
@@ -2781,6 +2782,22 @@
             z-index: 5;
         }
 
+        /* Ensure top-level H2s in sections have spacing from the yellow border */
+        section.reveal>h2 {
+            margin-top: 40px;
+            margin-left: 60px;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Adjust centered titles if needed */
+        section.reveal>h2[style*="text-align: center"] {
+            margin-left: 0;
+        }
+
         h2:hover {
             text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-cyan);
         }
@@ -2789,7 +2806,7 @@
             color: var(--accent-cyan);
             margin-top: 1.5rem;
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 1.3rem;
             letter-spacing: 1px;
         }
 
@@ -2900,7 +2917,7 @@
             position: absolute;
             bottom: 10px;
             right: 30px;
-            font-size: 0.7rem;
+            font-size: 1.0rem;
             color: var(--accent-cyan);
             font-family: monospace;
             background: rgba(0, 0, 0, 0.8);
@@ -5056,10 +5073,10 @@
 
         .fig-label-right {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 15px;
+            right: 15px;
             font-family: monospace;
-            font-size: 0.7rem;
+            font-size: 1.0rem;
             color: var(--accent-cyan);
             z-index: 10;
             text-align: right;
@@ -6646,7 +6663,7 @@
                     box-shadow: 0 0 24px #0ff4, 0 0 0 6px #111 inset;
                     padding: 40px;
                     width: 85vw;
-                    max-width: 960px;
+                    max-width: 1500px;
                     /* Constrained width to avoid side occlusion */
                     margin: 0 auto;
                     display: flex;
@@ -9622,10 +9639,118 @@
                                 <div class="cassette-label">核心黑科技</div>
                                 <div class="cassette-desc">
                                     <ul style="margin: 0; padding-left: 20px; color: #bbb;">
-                                        <li>MTAG2 (AI-based general reactive random)</li>
-                                        <li>Neural Rendering</li>
-                                        <li>实时光线追踪 (完美支持DX12)</li>
+                                        <li>MTAGR (AI-based generative rendering)</li>
+                                        <li>Neural Rendering & photon光子</li>
+                                        <li>Ray Tracing (完美支持DX12 Utimate & DXR1.1)</li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NEW: Roadmap Stairs Visualization -->
+                        <style>
+                            .roadmap-stairs {
+                                display: flex;
+                                align-items: flex-end;
+                                gap: 8px;
+                                margin-top: 15px;
+                                padding-top: 15px;
+                                border-top: 1px dashed rgba(255, 255, 255, 0.2);
+                                width: 100%;
+                            }
+
+                            .roadmap-step {
+                                flex: 1;
+                                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.3));
+                                border: 1px solid rgba(255, 255, 255, 0.1);
+                                border-radius: 4px 4px 0 0;
+                                padding: 8px 4px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                position: relative;
+                                transition: all 0.3s ease;
+                            }
+                            
+                            .roadmap-step:hover {
+                                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.3));
+                                box-shadow: 0 -5px 15px rgba(255, 82, 82, 0.2);
+                            }
+
+                            /* Stair heights relative to each other */
+                            .step-2023 { height: 100px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.1); }
+                            .step-2024 { height: 130px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.15); }
+                            .step-2025 { height: 160px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.2); }
+                            .step-2026 { height: 190px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.25); }
+
+                            .step-year {
+                                font-size: 1.5rem;
+                                font-weight: bold;
+                                color: #ff5252;
+                                margin-bottom: 8px;
+                                font-family: 'Impact', sans-serif;
+                                letter-spacing: 1px;
+                                text-shadow: 0 0 5px rgba(255, 82, 82, 0.5);
+                            }
+
+                            .step-list {
+                                font-size: 0.9rem;
+                                color: #ccc;
+                                text-align: center;
+                                line-height: 1.4;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 3px;
+                                font-weight: bold;
+                            }
+                            
+                            /* Line connecting tops */
+                            .step-connect-line {
+                                position: absolute;
+                                top: 0;
+                                right: -10px;
+                                width: 20px;
+                                height: 2px;
+                                background: #ff5252;
+                                transform: rotate(-45deg);
+                                transform-origin: left center;
+                                opacity: 0.5;
+                            }
+                        </style>
+
+                        <div class="roadmap-stairs">
+                            <div class="roadmap-step step-2023">
+                                <div class="step-year">2023</div>
+                                <div class="step-list">
+                                    <span>DirectX 11</span>
+                                    <span>Cloud Virtualization</span>
+                                </div>
+                            </div>
+                            <div class="roadmap-step step-2024">
+                                <div class="step-year">2024</div>
+                                <div class="step-list">
+                                    <span>DirectX 12</span>
+                                    <span>3DGS</span>
+                                </div>
+                            </div>
+                            <div class="roadmap-step step-2025">
+                                <div class="step-year">2025</div>
+                                <div class="step-list">
+                                    <span>OpenGL 4.6</span>
+                                    <span>Vulkan 1.3</span>
+                                    <span>DXR 1.0/1.1</span>
+                                    <span>MTAGR 1.0</span>
+                                    <span>VSR</span>
+                                </div>
+                            </div>
+                            <div class="roadmap-step step-2026">
+                                <div class="step-year">2026</div>
+                                <div class="step-list">
+                                    <span>DirectX 12U</span>
+                                    <span>Vulkan Raytracing</span>
+                                    <span>Neural Rendering</span>
+                                    <span>Photon</span>
+                                    <span>MTAGR 2.0</span>
                                 </div>
                             </div>
                         </div>
@@ -9637,9 +9762,173 @@
 
     <!-- NEW SLIDE 8: Edge & Matrix Intelligence -->
     <section class="reveal">
-        <h2>端侧产品与矩阵智能布局</h2>
+        <h2>端侧产品与具身智能布局</h2>
         <div class="cassette-center">
             <div class="cassette-single-card">
+                <!-- NEW: Physical AI Infrastructure Visualization -->
+                <style>
+                    .phys-ai-container {
+                        width: 100%;
+                        margin-bottom: 30px;
+                        padding-bottom: 20px;
+                        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+                    }
+
+                    .phys-ai-title {
+                        text-align: center;
+                        font-family: "Microsoft YaHei", sans-serif;
+                        font-size: 2rem;
+                        font-weight: 900;
+                        color: #fff;
+                        margin-bottom: 30px;
+                        letter-spacing: 2px;
+                        background: linear-gradient(90deg, #fff, #ddd);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+                    }
+
+                    .phys-ai-steps {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        gap: 15px;
+                    }
+
+                    .phys-step-card {
+                        flex: 1;
+                        background: rgba(255, 255, 255, 0.03);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 6px;
+                        padding: 15px 10px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        position: relative;
+                        transition: transform 0.3s;
+                    }
+                    
+                    .phys-step-card:hover {
+                        background: rgba(255, 255, 255, 0.06);
+                        border-color: rgba(255, 255, 255, 0.3);
+                        transform: translateY(-5px);
+                    }
+
+                    .phys-step-title {
+                        font-family: inherit;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        color: #fff;
+                        margin-bottom: 8px;
+                    }
+
+                    .phys-step-desc {
+                        font-family: inherit;
+                        font-size: 0.8rem;
+                        color: #aaa;
+                        line-height: 1.4;
+                        margin-bottom: 15px;
+                        min-height: 2.8em;
+                    }
+                    
+                    .phys-step-red-line {
+                        width: 30px;
+                        height: 3px;
+                        background: #d32f2f;
+                        margin-bottom: 15px;
+                        box-shadow: 0 0 5px #d32f2f;
+                    }
+
+                    .phys-step-visual {
+                        width: 100%;
+                        height: 100px;
+                        background: #000;
+                        border: 1px solid #333;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                        position: relative;
+                    }
+                    
+                    .phys-step-visual img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        opacity: 0.8;
+                    }
+                    
+                    .phys-step-visual i {
+                        font-size: 2.5rem;
+                        color: #555;
+                    }
+
+                    .phys-arrow {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 200px; /* Match heuristic height */
+                        color: #d32f2f;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+                    }
+                </style>
+
+                <div class="phys-ai-container">
+                    <div class="phys-ai-title">物理 AI 基础设施 具身智能的「终极训练场」</div>
+                    <div class="phys-ai-steps">
+                        <!-- Step 1 -->
+                        <div class="phys-step-card">
+                            <div class="phys-step-title">高保真感知模拟</div>
+                            <div class="phys-step-desc">模拟机器视觉与<br>多传感器融合</div>
+                            <div class="phys-step-red-line"></div>
+                            <div class="phys-step-visual">
+                                <i class="fas fa-eye" style="color: #00bcd4; text-shadow: 0 0 10px #00bcd4;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="phys-arrow">&gt;</div>
+
+                        <!-- Step 2 -->
+                        <div class="phys-step-card">
+                            <div class="phys-step-title">可交互物理引擎</div>
+                            <div class="phys-step-desc">构建可靠的<br>物理交互规则</div>
+                            <div class="phys-step-red-line"></div>
+                            <div class="phys-step-visual">
+                                <i class="fas fa-cubes" style="color: #ff9800; text-shadow: 0 0 10px #ff9800;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="phys-arrow">&gt;</div>
+
+                        <!-- Step 3 -->
+                        <div class="phys-step-card">
+                            <div class="phys-step-title">AI 驱动智能训练</div>
+                            <div class="phys-step-desc">基于强化学习的<br>大规模并行训练</div>
+                            <div class="phys-step-red-line"></div>
+                            <div class="phys-step-visual">
+                                <i class="fas fa-brain" style="color: #4caf50; text-shadow: 0 0 10px #4caf50;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div class="phys-arrow">&gt;</div>
+
+                        <!-- Step 4 -->
+                        <div class="phys-step-card">
+                            <div class="phys-step-title">虚拟生产与部署</div>
+                            <div class="phys-step-desc">从数字孪生到<br>价值创造</div>
+                            <div class="phys-step-red-line"></div>
+                            <div class="phys-step-visual">
+                                <i class="fas fa-industry" style="color: #e91e63; text-shadow: 0 0 10px #e91e63;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
                         <h3>“长江” AI SOC</h3>
@@ -9654,26 +9943,103 @@
                             <i class="fas fa-code-branch cassette-icon-amber"></i>
                             <div>
                                 <div class="cassette-label">全栈协同</div>
-                                <div class="cassette-desc">驱动端侧矩阵智能 + MP Robber 解决方案。</div>
+                                <div class="cassette-desc">驱动端侧具身智能 + MP Robber 解决方案。</div>
                             </div>
                         </div>
                     </div>
                     <div class="cassette-column">
-                        <h3>矩阵智能仿真训练平台</h3>
-                        <div class="cassette-row">
-                            <i class="fas fa-vr-cardboard cassette-icon-cyan"></i>
-                            <div>
-                                <div class="cassette-label">MT 拉姆达 (Lambda)</div>
-                                <div class="cassette-desc">
-                                    搭建 <strong>MT Verse</strong>，构建 <strong>NAMASAM</strong>。
+                        <h3>具身智能仿真训练平台</h3>
+                        
+                        <!-- MT Lambda Box -->
+                        <div style="background: rgba(0,0,0,0.5); border: 2px solid #b71c1c; border-radius: 6px; padding: 0; overflow: hidden; margin-bottom: 10px;">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(to bottom, #b71c1c, #7f0000); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px;">
+                                MT Lambda
+                            </div>
+                            
+                            <!-- Lab -->
+                            <div style="background: #222; text-align: center; padding: 10px; border-bottom: 1px solid #444; color: #eee; font-size: 1.1rem;">
+                                MT Lambda-Lab
+                            </div>
+                            
+                            <!-- Middle Layer: Sim & Verse and AI Blocks -->
+                            <div style="display: flex; border-bottom: 1px solid #444;">
+                                <!-- Left: Sim & Verse -->
+                                <div style="flex: 2; display: flex; flex-direction: column;">
+                                    <div style="background: #1a1a1a; text-align: center; padding: 10px; border-bottom: 1px solid #333; color: #ddd; font-size: 1.0rem;">
+                                        MT Lambda-Sim
+                                    </div>
+                                    <div style="background: #151515; text-align: center; padding: 10px; color: #ccc; font-size: 1.0rem;">
+                                        MTVERSE
+                                    </div>
+                                </div>
+                                
+                                <!-- Right: AI Stack -->
+                                <div style="flex: 1; border-left: 1px solid #444; display: flex; flex-direction: column;">
+                                    <div style="background: #333; color: #fff; text-align: center; font-size: 0.8rem; padding: 4px;">AI</div>
+                                    <div style="flex: 1; display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: #444; padding: 1px;">
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">Data Synthesis</div>
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">VLA</div>
+                                        
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">World Model</div>
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">RL</div>
+                                        
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">Torch-MUSA</div>
+                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">IL</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bottom Layer: Physics & Graphics engines -->
+                            <div style="display: flex;">
+                                <!-- Physics -->
+                                <div style="flex: 1; border-right: 1px solid #444; display: flex; flex-direction: column;">
+                                    <div style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">Physics</div>
+                                    <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
+                                        <div style="flex: 1; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                            MuJoCo<br>Warp-musa
+                                        </div>
+                                        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">Newton-musa</div>
+                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">MT AlphaCore</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Graphics -->
+                                <div style="flex: 1; display: flex; flex-direction: column;">
+                                    <div style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">Graphics</div>
+                                    <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
+                                        <div style="flex: 1.5; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                            <div style="font-weight: bold;">MT Photon</div>
+                                            <div style="font-size: 0.6rem; opacity: 0.8;">Ray Tracing &<br>Hybrid Rendering</div>
+                                        </div>
+                                        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">MTSS</div>
+                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">3DGS</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="cassette-row">
-                            <i class="fas fa-tasks cassette-icon-cyan"></i>
-                            <div>
-                                <div class="cassette-label">榜单与仿真</div>
-                                <div class="cassette-desc">统一开发流、生成数据、大量仿真训练，缩小 sim-to-real 差距。</div>
+
+                        <!-- Bullet Points -->
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                            <div class="cassette-row" style="margin-bottom: 5px;">
+                                <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">整合<strong>物理、渲染与AI</strong>三大核心引擎</div>
+                            </div>
+                            <div class="cassette-row" style="margin-bottom: 5px;">
+                                <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;"><strong>统一开发、仿真与训练环境</strong>，构建高效工作流</div>
+                            </div>
+                            <div class="cassette-row" style="margin-bottom: 5px;">
+                                <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;"><strong>高保真模拟环境</strong>、高质量数据生成、大并发仿真训练</div>
+                            </div>
+                            <div class="cassette-row" style="margin-bottom: 5px;">
+                                <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">缩小 <strong>Sim to Real</strong> 差距，加速机器人迭代</div>
                             </div>
                         </div>
                     </div>
@@ -9725,7 +10091,7 @@
         <h2>总结与愿景</h2>
         <div class="cassette-center">
             <div class="cassette-single-card" style="align-items: center; text-align: center;">
-                <div style="width: 100%; max-width: 800px;">
+                <div style="width: 100%; max-width: 1300px;">
                     <h3 style="text-align: center; border-bottom: none; font-size: 1.8rem; margin-bottom: 2rem;">
                         本次发布核心成果</h3>
                     <div
@@ -9742,7 +10108,7 @@
                         <span
                             style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">“长江”SOC</span>
                         <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">矩阵智能平台</span>
+                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">具身智能平台</span>
                         <span
                             style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">MTT
                             AI Book</span>
@@ -9768,7 +10134,7 @@
         <h2>01_开篇：核心问题</h2>
         <div class="content-grid no-scrollbar"
             style="height: 85vh; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-            <div style="text-align: left; width: 100%; max-width: 900px;">
+            <div style="text-align: left; width: 100%; max-width: 1400px;">
                 <h3
                     style="color: var(--accent-amber); margin-bottom: 1rem; border-bottom: 1px solid rgba(255, 193, 7, 0.3); padding-bottom: 0.5rem;">
                     处理器分化疑问</h3>
@@ -9879,7 +10245,7 @@
 
                 <!-- Copied Architecture Overview Content -->
                 <div class="content-grid"
-                    style="display: flex; flex-direction: column; gap: 20px; max-width: 1000px; margin: 2rem auto 0;">
+                    style="display: flex; flex-direction: column; gap: 20px; max-width: 1500px; margin: 2rem auto 0;">
 
                     <!-- CPU Row -->
                     <div
@@ -10075,7 +10441,7 @@
     <section class="reveal">
         <h2>02_GPU设计逻辑</h2>
         <div class="no-scrollbar"
-            style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 900px; margin: 0 auto; height: 85vh; overflow-y: auto; padding-right: 10px;">
+            style="display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 1400px; margin: 0 auto; height: 85vh; overflow-y: auto; padding-right: 10px;">
 
             <!-- 1. 3D Model Visual (Top) -->
             <div class="image-container" id="model-3d-container"
@@ -11534,7 +11900,7 @@
     <section class="reveal">
         <h2>03_CPU核心优势</h2>
         <div class="no-scrollbar"
-            style="height: 85vh; overflow-y: auto; display: flex; flex-direction: column; gap: 2rem; max-width: 900px; margin: 0 auto;">
+            style="height: 85vh; overflow-y: auto; display: flex; flex-direction: column; gap: 2rem; max-width: 1400px; margin: 0 auto;">
             <div>
                 <h3 style="color: var(--accent-cyan);">CPU与GPU处理分支任务的差异</h3>
 
@@ -11872,7 +12238,7 @@
             </div>
             <!-- 4. Collaboration Summary Card -->
             <div
-                style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196f3; padding: 15px; margin: 20px auto; border-radius: 8px; max-width: 800px; display: flex; align-items: center; gap: 15px;">
+                style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196f3; padding: 15px; margin: 20px auto; border-radius: 8px; max-width: 1300px; display: flex; align-items: center; gap: 15px;">
                 <div style="font-size: 2rem;">🤝</div>
                 <div>
                     <strong style="color: #2196f3; display: block; margin-bottom: 4px;">协同工作</strong>
@@ -12045,7 +12411,7 @@
                     .zoomed-core {
                         width: 90vw;
                         height: 80vh;
-                        max-width: 1000px;
+                        max-width: 1500px;
                         max-height: 700px;
                         background: #050a14;
                         border: 1px solid #333;
@@ -12476,7 +12842,7 @@
 
                 <!-- 6. Chip Perspective Summary -->
                 <div
-                    style="background: rgba(255, 193, 7, 0.05); border: 1px solid #ffc107; padding: 15px; margin: 20px auto; border-radius: 8px; max-width: 900px; display: flex; align-items: flex-start; gap: 15px;">
+                    style="background: rgba(255, 193, 7, 0.05); border: 1px solid #ffc107; padding: 15px; margin: 20px auto; border-radius: 8px; max-width: 1400px; display: flex; align-items: flex-start; gap: 15px;">
                     <div style="font-size: 1.8rem; margin-top: -5px;">🔬</div>
                     <div>
                         <strong style="color: #ffc107; display: block; margin-bottom: 4px;">芯片透视</strong>
@@ -12499,7 +12865,7 @@
         <!-- Changed layout to column for top-down flow -->
         <div class="no-scrollbar"
             style="height: 85vh; overflow-y: auto; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
-            <div style="width: 100%; max-width: 900px;">
+            <div style="width: 100%; max-width: 1400px;">
                 <h3 style="color: var(--accent-red);">GPU的传统核心场景：图形渲染</h3>
 
                 <!-- 1. Graphics Rendering Card -->
@@ -12868,7 +13234,7 @@
                 </div>
             </div>
 
-            <div style="width: 100%; max-width: 900px;">
+            <div style="width: 100%; max-width: 1400px;">
                 <h3 style="color: var(--accent-red);">GPU向AI领域延伸（GPGPU）</h3>
 
                 <!-- 2. AI Extension Card -->
@@ -13939,7 +14305,7 @@
                 /* Container Layout */
                 .npu-story-container {
                     width: 100%;
-                    max-width: 1200px;
+                    max-width: 1500px;
                     /* Aligned with other sections */
                     height: 950px;
                     /* Increased height to accommodate summary text */
@@ -14854,7 +15220,7 @@
                     border-radius: 16px;
                     background: #000;
                     width: 95%;
-                    max-width: 650px;
+                    max-width: 950px;
                     box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
                 }
 
@@ -16128,7 +16494,7 @@
     <section class="reveal">
         <h2>06_NPU是如何从硬件上进行AI加速的</h2>
         <div class="no-scrollbar"
-            style="height: 85vh; display: flex; flex-direction: column; gap: 10px; padding: 0 20px; width: 100%; max-width: 900px; margin: 0 auto; overflow-y: auto;">
+            style="height: 85vh; display: flex; flex-direction: column; gap: 10px; padding: 0 20px; width: 100%; max-width: 1100px; margin: 0 auto; overflow-y: auto;">
 
             <!-- 1. The Problem: Matrix Math -->
             <div
@@ -17381,7 +17747,7 @@
 
             <!-- Architecture Diagram Container -->
             <div
-                style="width: 100%; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr 1fr; grid-template-rows: auto auto auto; gap: 20px; height: 600px;">
+                style="width: 100%; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr 1fr; grid-template-rows: auto auto auto; gap: 20px; height: 600px;">
 
                 <!-- 1. Top: Smart Agents (The Brain/Application) -->
                 <div
@@ -17507,7 +17873,7 @@
         <h2>09_摩尔线程-AI全景生态</h2>
 
         <div class="no-scrollbar"
-            style="height: 85vh; overflow-y: auto; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; justify-content: flex-start; padding-bottom: 50px;">
+            style="height: 85vh; overflow-y: auto; width: 100%; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; justify-content: flex-start; padding-bottom: 50px;">
 
             <!-- 1. AI Applications (Top) -->
             <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -17765,7 +18131,7 @@
         <h2>10_摩尔线程-E300 AI计算模组</h2>
 
         <div class="no-scrollbar"
-            style="height: 85vh; overflow-y: auto; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: row; gap: 30px; align-items: center; justify-content: center; padding: 0 20px;">
+            style="height: 85vh; overflow-y: auto; width: 100%; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: row; gap: 30px; align-items: center; justify-content: center; padding: 0 20px;">
 
             <!-- Left Column: Visual & Intro -->
             <div style="flex: 1; display: flex; flex-direction: column; gap: 25px; align-items: center;">
@@ -19181,8 +19547,8 @@
             }
             lastDrawTime = timestamp;
 
-            // Fade effect - slightly darker for better contrast
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+            // Fade effect - Increase opacity to reduce trail length and "dirty" marks
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
             ctx.fillRect(0, 0, width, height);
 
             // Base font setting
