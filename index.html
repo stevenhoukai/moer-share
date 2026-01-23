@@ -6908,7 +6908,7 @@
 
                     .core-theme-title {
                         font-family: "Microsoft YaHei", "SimHei", sans-serif;
-                        font-size: 3.5rem !important;
+                        font-size: 2.0rem !important;
                         margin: 0 0 10px 0 !important;
                         color: #fff;
                         text-shadow: 0 0 20px rgba(79, 163, 209, 0.6);
@@ -9671,17 +9671,36 @@
                                 position: relative;
                                 transition: all 0.3s ease;
                             }
-                            
+
                             .roadmap-step:hover {
                                 background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.3));
                                 box-shadow: 0 -5px 15px rgba(255, 82, 82, 0.2);
                             }
 
                             /* Stair heights relative to each other */
-                            .step-2023 { height: 100px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.1); }
-                            .step-2024 { height: 130px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.15); }
-                            .step-2025 { height: 160px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.2); }
-                            .step-2026 { height: 190px; border-bottom: 2px solid #ff5252; box-shadow: 0 0 10px rgba(255,82,82,0.25); }
+                            .step-2023 {
+                                height: 100px;
+                                border-bottom: 2px solid #ff5252;
+                                box-shadow: 0 0 10px rgba(255, 82, 82, 0.1);
+                            }
+
+                            .step-2024 {
+                                height: 130px;
+                                border-bottom: 2px solid #ff5252;
+                                box-shadow: 0 0 10px rgba(255, 82, 82, 0.15);
+                            }
+
+                            .step-2025 {
+                                height: 160px;
+                                border-bottom: 2px solid #ff5252;
+                                box-shadow: 0 0 10px rgba(255, 82, 82, 0.2);
+                            }
+
+                            .step-2026 {
+                                height: 190px;
+                                border-bottom: 2px solid #ff5252;
+                                box-shadow: 0 0 10px rgba(255, 82, 82, 0.25);
+                            }
 
                             .step-year {
                                 font-size: 1.5rem;
@@ -9703,7 +9722,7 @@
                                 gap: 3px;
                                 font-weight: bold;
                             }
-                            
+
                             /* Line connecting tops */
                             .step-connect-line {
                                 position: absolute;
@@ -9808,7 +9827,7 @@
                         position: relative;
                         transition: transform 0.3s;
                     }
-                    
+
                     .phys-step-card:hover {
                         background: rgba(255, 255, 255, 0.06);
                         border-color: rgba(255, 255, 255, 0.3);
@@ -9831,7 +9850,7 @@
                         margin-bottom: 15px;
                         min-height: 2.8em;
                     }
-                    
+
                     .phys-step-red-line {
                         width: 30px;
                         height: 3px;
@@ -9851,14 +9870,14 @@
                         overflow: hidden;
                         position: relative;
                     }
-                    
+
                     .phys-step-visual img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         opacity: 0.8;
                     }
-                    
+
                     .phys-step-visual i {
                         font-size: 2.5rem;
                         color: #555;
@@ -9868,7 +9887,8 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        height: 200px; /* Match heuristic height */
+                        height: 200px;
+                        /* Match heuristic height */
                         color: #d32f2f;
                         font-size: 1.2rem;
                         font-weight: bold;
@@ -9931,92 +9951,312 @@
 
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
-                        <h3>“长江” AI SOC</h3>
-                        <div class="cassette-row">
-                            <i class="fas fa-memory cassette-icon-amber"></i>
-                            <div>
-                                <div class="cassette-label">完全智能化</div>
-                                <div class="cassette-desc">7合1集成：CPU+GPU+NPU+VPU+DPU+DSP+ISP。</div>
+                        <div class="soc-header">长江 智能 SoC 芯片</div>
+
+                        <div class="soc-diagram-container">
+                            <style>
+                                .soc-header {
+                                    font-size: 1.5rem;
+                                    color: #fff;
+                                    text-align: center;
+                                    margin-bottom: 15px;
+                                    font-weight: bold;
+                                    letter-spacing: 2px;
+                                    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+                                }
+
+                                .soc-diagram-container {
+                                    width: 100%;
+                                    background: linear-gradient(180deg, #111 0%, #000 100%);
+                                    border: 1px solid #333;
+                                    border-radius: 8px;
+                                    padding: 15px;
+                                    box-sizing: border-box;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 15px;
+                                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                                }
+
+                                .soc-features {
+                                    display: grid;
+                                    grid-template-columns: repeat(4, 1fr);
+                                    gap: 10px 5px;
+                                    padding-bottom: 15px;
+                                    border-bottom: 1px solid #333;
+                                }
+
+                                .soc-feat-item {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    text-align: center;
+                                }
+
+                                .soc-icon-circle {
+                                    width: 32px;
+                                    height: 32px;
+                                    border-radius: 50%;
+                                    background: radial-gradient(circle at 30% 30%, #424242, #212121);
+                                    border: 1px solid #ff7043;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin-bottom: 6px;
+                                    box-shadow: 0 0 8px rgba(255, 112, 67, 0.3);
+                                }
+
+                                .soc-icon-circle i {
+                                    font-size: 14px;
+                                    color: #ffccbc;
+                                }
+
+                                .soc-feat-label {
+                                    font-size: 0.6rem;
+                                    color: #ddd;
+                                    white-space: nowrap;
+                                    font-weight: bold;
+                                }
+
+                                .soc-specs-grid {
+                                    display: grid;
+                                    grid-template-columns: repeat(2, 1fr);
+                                    gap: 8px;
+                                }
+
+                                .soc-module {
+                                    border: 1px solid #555;
+                                    border-radius: 4px;
+                                    padding: 10px 5px;
+                                    background: rgba(255, 255, 255, 0.03);
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: start;
+                                }
+
+                                .soc-module:last-child {
+                                    grid-column: span 2;
+                                    width: 60%;
+                                    margin: 0 auto;
+                                }
+
+                                /* Center ISP if odd */
+
+                                .soc-mod-title {
+                                    font-size: 1rem;
+                                    font-weight: bold;
+                                    color: #fff;
+                                    text-align: center;
+                                    margin-bottom: 6px;
+                                    letter-spacing: 1px;
+                                }
+
+                                .soc-mod-desc {
+                                    font-size: 0.65rem;
+                                    color: #bbb;
+                                    text-align: center;
+                                    line-height: 1.4;
+                                    word-break: break-word;
+                                }
+
+                                .soc-footer {
+                                    border-top: 1px solid #444;
+                                    /* Brighter line */
+                                    padding-top: 12px;
+                                    text-align: center;
+                                    margin-top: 5px;
+                                }
+
+                                .soc-footer-line {
+                                    font-size: 0.7rem;
+                                    color: #ccc;
+                                    margin-bottom: 4px;
+                                    font-weight: bold;
+                                }
+                            </style>
+
+                            <!-- Features Row -->
+                            <div class="soc-features">
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-images"></i></div>
+                                    <div class="soc-feat-label">图像分类</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-layer-group"></i></div>
+                                    <div class="soc-feat-label">语义分割</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-expand"></i></div>
+                                    <div class="soc-feat-label">目标识别</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-font"></i></div>
+                                    <div class="soc-feat-label">文本识别</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-magic"></i></div>
+                                    <div class="soc-feat-label">AIGC</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-cubes"></i></div>
+                                    <div class="soc-feat-label">LLM</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-wave-square"></i></div>
+                                    <div class="soc-feat-label">语音合成</div>
+                                </div>
+                                <div class="soc-feat-item">
+                                    <div class="soc-icon-circle"><i class="fas fa-microphone"></i></div>
+                                    <div class="soc-feat-label">语音识别</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="cassette-row">
-                            <i class="fas fa-code-branch cassette-icon-amber"></i>
-                            <div>
-                                <div class="cassette-label">全栈协同</div>
-                                <div class="cassette-desc">驱动端侧具身智能 + MP Robber 解决方案。</div>
+
+                            <!-- Modules Grid -->
+                            <div class="soc-specs-grid">
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">CPU</div>
+                                    <div class="soc-mod-desc">8个全大核<br>主频最高 @2.65GHz<br>高性能低功耗</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">GPU</div>
+                                    <div class="soc-mod-desc">全功能 GPU<br>高性能 3D 渲染<br>LLM 端侧推理</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">NPU</div>
+                                    <div class="soc-mod-desc">可编程双核<br>多模态加速处理<br>(语音/图像)</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">VPU</div>
+                                    <div class="soc-mod-desc">8K 30FPS / 4K 60FPS<br>编解码<br>H.265 / H.264 / AV1</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">DPU</div>
+                                    <div class="soc-mod-desc">高清多屏异显<br>2×8K60 / 8×4K60<br>DP / MIPI</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">DSP</div>
+                                    <div class="soc-mod-desc">高性能双核<br>AI 降噪<br>Hi-Fi 音效</div>
+                                </div>
+                                <div class="soc-module">
+                                    <div class="soc-mod-title">ISP</div>
+                                    <div class="soc-mod-desc">影像处理器<br>最高 3200 万像素摄像头<br>HDR</div>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="soc-footer">
+                                <div class="soc-footer-line">支持 32GB/64GB LPDDR5X, 内存带宽 > 100 GB/s</div>
+                                <div class="soc-footer-line">异构 AI 算力 50 TOPS INT8, 支持 FP16/FP32/FP64 多精度计算</div>
                             </div>
                         </div>
                     </div>
                     <div class="cassette-column">
                         <h3>具身智能仿真训练平台</h3>
-                        
+
                         <!-- MT Lambda Box -->
-                        <div style="background: rgba(0,0,0,0.5); border: 2px solid #b71c1c; border-radius: 6px; padding: 0; overflow: hidden; margin-bottom: 10px;">
+                        <div
+                            style="background: rgba(0,0,0,0.5); border: 2px solid #b71c1c; border-radius: 6px; padding: 0; overflow: hidden; margin-bottom: 10px;">
                             <!-- Header -->
-                            <div style="background: linear-gradient(to bottom, #b71c1c, #7f0000); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px;">
+                            <div
+                                style="background: linear-gradient(to bottom, #b71c1c, #7f0000); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px;">
                                 MT Lambda
                             </div>
-                            
+
                             <!-- Lab -->
-                            <div style="background: #222; text-align: center; padding: 10px; border-bottom: 1px solid #444; color: #eee; font-size: 1.1rem;">
+                            <div
+                                style="background: #222; text-align: center; padding: 10px; border-bottom: 1px solid #444; color: #eee; font-size: 1.1rem;">
                                 MT Lambda-Lab
                             </div>
-                            
+
                             <!-- Middle Layer: Sim & Verse and AI Blocks -->
                             <div style="display: flex; border-bottom: 1px solid #444;">
                                 <!-- Left: Sim & Verse -->
                                 <div style="flex: 2; display: flex; flex-direction: column;">
-                                    <div style="background: #1a1a1a; text-align: center; padding: 10px; border-bottom: 1px solid #333; color: #ddd; font-size: 1.0rem;">
+                                    <div
+                                        style="background: #1a1a1a; text-align: center; padding: 10px; border-bottom: 1px solid #333; color: #ddd; font-size: 1.0rem;">
                                         MT Lambda-Sim
                                     </div>
-                                    <div style="background: #151515; text-align: center; padding: 10px; color: #ccc; font-size: 1.0rem;">
+                                    <div
+                                        style="background: #151515; text-align: center; padding: 10px; color: #ccc; font-size: 1.0rem;">
                                         MTVERSE
                                     </div>
                                 </div>
-                                
+
                                 <!-- Right: AI Stack -->
-                                <div style="flex: 1; border-left: 1px solid #444; display: flex; flex-direction: column;">
-                                    <div style="background: #333; color: #fff; text-align: center; font-size: 0.8rem; padding: 4px;">AI</div>
-                                    <div style="flex: 1; display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: #444; padding: 1px;">
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">Data Synthesis</div>
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">VLA</div>
-                                        
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">World Model</div>
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">RL</div>
-                                        
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">Torch-MUSA</div>
-                                        <div style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">IL</div>
+                                <div
+                                    style="flex: 1; border-left: 1px solid #444; display: flex; flex-direction: column;">
+                                    <div
+                                        style="background: #333; color: #fff; text-align: center; font-size: 0.8rem; padding: 4px;">
+                                        AI</div>
+                                    <div
+                                        style="flex: 1; display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: #444; padding: 1px;">
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            Data Synthesis</div>
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            VLA</div>
+
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            World Model</div>
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            RL</div>
+
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            Torch-MUSA</div>
+                                        <div
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            IL</div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Bottom Layer: Physics & Graphics engines -->
                             <div style="display: flex;">
                                 <!-- Physics -->
-                                <div style="flex: 1; border-right: 1px solid #444; display: flex; flex-direction: column;">
-                                    <div style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">Physics</div>
+                                <div
+                                    style="flex: 1; border-right: 1px solid #444; display: flex; flex-direction: column;">
+                                    <div
+                                        style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">
+                                        Physics</div>
                                     <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
-                                        <div style="flex: 1; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                        <div
+                                            style="flex: 1; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px;">
                                             MuJoCo<br>Warp-musa
                                         </div>
                                         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">Newton-musa</div>
-                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">MT AlphaCore</div>
+                                            <div
+                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                Newton-musa</div>
+                                            <div
+                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                MT AlphaCore</div>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Graphics -->
                                 <div style="flex: 1; display: flex; flex-direction: column;">
-                                    <div style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">Graphics</div>
+                                    <div
+                                        style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">
+                                        Graphics</div>
                                     <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
-                                        <div style="flex: 1.5; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                        <div
+                                            style="flex: 1.5; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px;">
                                             <div style="font-weight: bold;">MT Photon</div>
-                                            <div style="font-size: 0.6rem; opacity: 0.8;">Ray Tracing &<br>Hybrid Rendering</div>
+                                            <div style="font-size: 0.6rem; opacity: 0.8;">Ray Tracing &<br>Hybrid
+                                                Rendering</div>
                                         </div>
                                         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
-                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">MTSS</div>
-                                            <div style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">3DGS</div>
+                                            <div
+                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                MTSS</div>
+                                            <div
+                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                3DGS</div>
                                         </div>
                                     </div>
                                 </div>
@@ -10027,22 +10267,535 @@
                         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
                             <div class="cassette-row" style="margin-bottom: 5px;">
                                 <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
-                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">整合<strong>物理、渲染与AI</strong>三大核心引擎</div>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">
+                                    整合<strong>物理、渲染与AI</strong>三大核心引擎</div>
                             </div>
                             <div class="cassette-row" style="margin-bottom: 5px;">
                                 <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
-                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;"><strong>统一开发、仿真与训练环境</strong>，构建高效工作流</div>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">
+                                    <strong>统一开发、仿真与训练环境</strong>，构建高效工作流
+                                </div>
                             </div>
                             <div class="cassette-row" style="margin-bottom: 5px;">
                                 <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
-                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;"><strong>高保真模拟环境</strong>、高质量数据生成、大并发仿真训练</div>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">
+                                    <strong>高保真模拟环境</strong>、高质量数据生成、大并发仿真训练
+                                </div>
                             </div>
                             <div class="cassette-row" style="margin-bottom: 5px;">
                                 <i class="fas fa-play cassette-icon-red" style="font-size: 1rem; margin-top: 3px;"></i>
-                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">缩小 <strong>Sim to Real</strong> 差距，加速机器人迭代</div>
+                                <div class="cassette-desc" style="font-size: 1.0rem; color: #eee;">缩小 <strong>Sim to
+                                        Real</strong> 差距，加速机器人迭代</div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- NEW: MT Robot End-to-Cloud Solution Diagram -->
+                <div class="mt-robot-container">
+                    <h3 class="mt-robot-header">MT Robot 具身智能解决方案 端云一体</h3>
+
+                    <!-- 1. Cloud Section -->
+                    <div class="mt-robot-section cloud-section">
+                        <!-- Left: Brain -->
+                        <div class="mt-left-panel">
+                            <div class="mt-side-box">
+                                <div class="mt-side-title">云侧决策<br><span class="mt-highlight">「智慧大脑」</span></div>
+                                <div class="mt-icon-grp">
+                                    <div class="kuae-grid-icon">
+                                        <div class="k-rack"></div>
+                                        <div class="k-rack"></div>
+                                        <div class="k-rack"></div>
+                                        <div class="k-rack"></div>
+                                    </div>
+                                    <div class="mt-dev-info">
+                                        <div class="mt-dev-name">KUAE 智算集群</div>
+                                        <div class="mt-dev-desc">VLM 视觉语言模型<br>MLLM 多模态基础模型</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Middle: Input Flow -->
+                        <div class="mt-input-flow">
+                            <div class="mt-flow-text-top text-red">多模态用户输入</div>
+                            <div class="mt-arrow-line right red-glow"></div>
+                            <div class="mt-arrow-line left white-dim" style="margin-top:20px;"></div>
+                            <div class="mt-flow-text-bot text-white">文字音频输出</div>
+                        </div>
+
+                        <!-- Right: Agents -->
+                        <div class="mt-agent-flow">
+                            <!-- Agent 1 -->
+                            <div class="mt-agent-group">
+                                <div class="mt-agent-box">
+                                    <div class="mt-agent-title">交互 Agent</div>
+                                    <div class="mt-mod-row"><span>记忆模块</span><span>工具模块</span><span>MLLM</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Connection -->
+                            <div class="mt-agent-conn">
+                                <div class="mt-conn-label text-red">任务下发</div>
+                                <div class="mt-conn-line right red-glow"></div>
+                                <div class="mt-conn-line left white-dim" style="margin-top:20px;"></div>
+                                <div class="mt-conn-label-bot text-white">状态反馈</div>
+                            </div>
+
+                            <!-- Agent 2 -->
+                            <div class="mt-agent-group">
+                                <div class="mt-agent-box">
+                                    <div class="mt-agent-title">规划 Agent</div>
+                                    <div class="mt-mod-row"><span>记忆模块</span><span>工具模块</span><span>VLM</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Connection -->
+                            <div class="mt-agent-conn">
+                                <div class="mt-conn-label text-red">任务规划</div>
+                                <div class="mt-conn-line right red-glow"></div>
+                                <div class="mt-conn-line left white-dim" style="margin-top:20px;"></div>
+                                <div class="mt-conn-label-bot text-white">错误&建议</div>
+                            </div>
+
+                            <!-- Agent 3 -->
+                            <div class="mt-agent-group">
+                                <div class="mt-agent-box">
+                                    <div class="mt-agent-title">反思 Agent</div>
+                                    <div class="mt-mod-row"><span>记忆模块</span><span>工具模块</span><span>VLM</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vertical Connections Layer -->
+                    <div class="mt-vertical-layer">
+                        <div class="mt-v-conn start-plan">
+                            <div class="mt-v-text text-red">子任务下发</div>
+                            <div class="mt-v-line down red-glow"></div>
+                        </div>
+                        <div class="mt-v-conn end-control">
+                            <div class="mt-v-line up red-glow"></div>
+                            <div class="mt-v-text text-red" style="margin-top: 5px;">执行反馈</div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Edge Section -->
+                    <div class="mt-robot-section edge-section">
+                        <!-- Left: Cerebellum -->
+                        <div class="mt-left-panel">
+                            <div class="mt-side-box">
+                                <div class="mt-side-title">端侧执行<br><span class="mt-highlight">「敏捷小脑」</span></div>
+                                <div class="mt-icon-grp">
+                                    <div class="e300-chip-icon">
+                                        <div class="chip-inner">M</div>
+                                    </div>
+                                    <div class="mt-dev-info">
+                                        <div class="mt-dev-name">MTT E300 AI 模组</div>
+                                        <div class="mt-dev-desc">VA 视觉-动作模型<br>RL 强化学习模型<br>轨迹优化</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Functional Blocks -->
+                        <div class="mt-func-container">
+                            <!-- Block 1 -->
+                            <div class="mt-func-block">
+                                <div class="mt-func-head">具身操作</div>
+                                <div class="mt-mod-row dark"><span>感知模型</span><span>运动规划</span><span>VA / VLA</span>
+                                </div>
+                            </div>
+                            <!-- Block 2 -->
+                            <div class="mt-func-block">
+                                <div class="mt-func-head">具身导航</div>
+                                <div class="mt-mod-row dark"><span>定位模块</span><span>轨迹跟踪</span><span>VLN</span></div>
+                            </div>
+                            <!-- Block 3 -->
+                            <div class="mt-func-block">
+                                <div class="mt-func-head">具身运控</div>
+                                <div class="mt-mod-row dark"><span>状态机模块</span><span>轨迹优化</span><span>RL</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <style>
+                        .mt-robot-container {
+                            width: 100%;
+                            background: #000;
+                            border: 1px solid #333;
+                            border-radius: 8px;
+                            padding: 20px;
+                            margin-top: 20px;
+                            position: relative;
+                        }
+
+                        .mt-robot-header {
+                            text-align: center;
+                            font-size: 1.8rem;
+                            color: #fff;
+                            margin-bottom: 30px;
+                            letter-spacing: 2px;
+                        }
+
+                        .mt-robot-section {
+                            display: flex;
+                            border: 1px solid #444;
+                            border-radius: 4px;
+                            margin-bottom: 20px;
+                            padding: 15px;
+                            position: relative;
+                        }
+
+                        .edge-section {
+                            margin-bottom: 0;
+                        }
+
+                        .mt-left-panel {
+                            width: 250px;
+                            flex-shrink: 0;
+                            border-right: 1px solid #444;
+                            padding-right: 15px;
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .mt-side-box {
+                            width: 100%;
+                        }
+
+                        .mt-side-title {
+                            font-size: 1rem;
+                            color: #fff;
+                            margin-bottom: 10px;
+                            font-weight: bold;
+                            line-height: 1.4;
+                        }
+
+                        .mt-highlight {
+                            font-size: 1.2rem;
+                            display: block;
+                            margin-top: 4px;
+                        }
+
+                        .mt-icon-grp {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+
+                        /* KUAE Icon */
+                        .kuae-grid-icon {
+                            width: 40px;
+                            height: 36px;
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 2px;
+                        }
+
+                        .k-rack {
+                            background: #555;
+                            border: 1px solid #777;
+                        }
+
+                        /* E300 Icon */
+                        .e300-chip-icon {
+                            width: 40px;
+                            height: 36px;
+                            background: #333;
+                            border: 1px solid #666;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                        }
+
+                        .e300-chip-icon::after {
+                            content: '';
+                            position: absolute;
+                            inset: 2px;
+                            border: 1px solid #888;
+                        }
+
+                        .chip-inner {
+                            font-size: 10px;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+
+                        .mt-dev-info {
+                            flex: 1;
+                        }
+
+                        .mt-dev-name {
+                            font-size: 0.8rem;
+                            color: #fff;
+                            font-weight: bold;
+                            margin-bottom: 4px;
+                        }
+
+                        .mt-dev-desc {
+                            font-size: 0.6rem;
+                            color: #888;
+                            line-height: 1.3;
+                        }
+
+                        /* Flow Area */
+                        .mt-input-flow {
+                            width: 100px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            padding: 0 10px;
+                            flex-shrink: 0;
+                        }
+
+                        .mt-agent-flow {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            padding-left: 10px;
+                        }
+
+                        .mt-flow-text-top {
+                            font-size: 0.6rem;
+                            text-align: center;
+                            margin-bottom: 2px;
+                        }
+
+                        .mt-flow-text-bot {
+                            font-size: 0.6rem;
+                            text-align: center;
+                            margin-top: 2px;
+                        }
+
+                        .text-red {
+                            color: #ff5252;
+                        }
+
+                        .text-white {
+                            color: #ccc;
+                        }
+
+                        .red-glow {
+                            background: linear-gradient(90deg, transparent, #ff5252, #ff5252);
+                            box-shadow: 0 0 5px #ff5252;
+                        }
+
+                        .white-dim {
+                            background: linear-gradient(270deg, transparent, #888, #888);
+                        }
+
+                        .mt-arrow-line {
+                            height: 2px;
+                            width: 100%;
+                            position: relative;
+                        }
+
+                        .mt-arrow-line.right::after {
+                            content: '';
+                            position: absolute;
+                            right: -4px;
+                            top: -3px;
+                            border-left: 6px solid #ff5252;
+                            border-top: 4px solid transparent;
+                            border-bottom: 4px solid transparent;
+                        }
+
+                        .mt-arrow-line.left::after {
+                            content: '';
+                            position: absolute;
+                            left: -4px;
+                            top: -3px;
+                            border-right: 6px solid #888;
+                            border-top: 4px solid transparent;
+                            border-bottom: 4px solid transparent;
+                        }
+
+                        /* Agents */
+                        .mt-agent-group {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 180px;
+                        }
+
+                        .mt-agent-box {
+                            width: 100%;
+                            border: 1px solid #444;
+                            background: #1a1a1a;
+                            padding: 5px;
+                            border-radius: 4px;
+                        }
+
+                        .mt-agent-title {
+                            font-size: 0.8rem;
+                            color: #fff;
+                            margin-bottom: 6px;
+                            text-align: center;
+                        }
+
+                        .mt-mod-row {
+                            display: flex;
+                            gap: 4px;
+                            justify-content: center;
+                        }
+
+                        .mt-mod-row span {
+                            font-size: 0.6rem;
+                            color: #aaa;
+                            background: #333;
+                            padding: 2px 4px;
+                            border-radius: 2px;
+                            flex: 1;
+                            text-align: center;
+                            white-space: nowrap;
+                        }
+
+                        .mt-mod-row.dark span {
+                            background: #222;
+                        }
+
+                        .mt-agent-conn {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            margin: 0 5px;
+                            position: relative;
+                        }
+
+                        .mt-conn-label {
+                            font-size: 0.6rem;
+                            text-align: center;
+                            margin-bottom: 2px;
+                        }
+
+                        .mt-conn-label-bot {
+                            font-size: 0.6rem;
+                            text-align: center;
+                            margin-top: 2px;
+                        }
+
+                        .mt-conn-line {
+                            height: 2px;
+                            width: 100%;
+                            position: relative;
+                        }
+
+                        .mt-conn-line.right::after {
+                            content: '';
+                            position: absolute;
+                            right: -4px;
+                            top: -3px;
+                            border-left: 6px solid #ff5252;
+                            border-top: 4px solid transparent;
+                            border-bottom: 4px solid transparent;
+                        }
+
+                        .mt-conn-line.left::after {
+                            content: '';
+                            position: absolute;
+                            left: -4px;
+                            top: -3px;
+                            border-right: 6px solid #888;
+                            border-top: 4px solid transparent;
+                            border-bottom: 4px solid transparent;
+                        }
+
+                        /* Edge Function Blocks */
+                        .mt-func-container {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            padding-left: 30px;
+                            gap: 20px;
+                        }
+
+                        .mt-func-block {
+                            flex: 1;
+                            background: #111;
+                            border: 1px solid #333;
+                            padding: 10px;
+                            border-radius: 4px;
+                        }
+
+                        .mt-func-head {
+                            font-size: 0.9rem;
+                            color: #ddd;
+                            margin-bottom: 8px;
+                            text-align: center;
+                            border-bottom: 1px solid #333;
+                            padding-bottom: 4px;
+                        }
+
+                        /* Vertical Linking */
+                        .mt-vertical-layer {
+                            position: absolute;
+                            top: 120px;
+                            left: 0;
+                            width: 100%;
+                            height: 100px;
+                            pointer-events: none;
+                            z-index: 10;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+
+                        .mt-v-conn {
+                            position: absolute;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 60px;
+                        }
+
+                        /* Positioning logic: approximated based on layout */
+                        .mt-v-conn.start-plan {
+                            left: 63%;
+                            top: 20px;
+                        }
+
+                        .mt-v-conn.end-control {
+                            right: 8%;
+                            top: 20px;
+                        }
+
+                        .mt-v-line {
+                            width: 2px;
+                            height: 60px;
+                            background: #ff5252;
+                            position: relative;
+                        }
+
+                        .mt-v-text {
+                            font-size: 0.6rem;
+                            background: #000;
+                            padding: 2px;
+                        }
+
+                        .mt-v-line.down::after {
+                            content: '';
+                            position: absolute;
+                            bottom: -4px;
+                            right: -3px;
+                            border-top: 6px solid #ff5252;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                        }
+
+                        .mt-v-line.up::before {
+                            content: '';
+                            position: absolute;
+                            top: -4px;
+                            right: -3px;
+                            border-bottom: 6px solid #ff5252;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                        }
+                    </style>
                 </div>
             </div>
         </div>
@@ -10056,23 +10809,888 @@
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
                         <h3>“摩尔学院”</h3>
-                        <div class="cassette-row">
-                            <i class="fas fa-university cassette-icon-green"></i>
-                            <div>
-                                <div class="cassette-label">规模与合作</div>
-                                <div class="cassette-desc">4大基地，20万+用户。携手北大、清华、浙大等顶尖高校，共育国产生态。</div>
+                        <style>
+                            .mta-diagram-container {
+                                width: 100%;
+                                padding: 25px 0;
+                                background: linear-gradient(to bottom, #111, #000);
+                                border-top: 1px solid #333;
+                                border-bottom: 1px solid #333;
+                                position: relative;
+                                color: #fff;
+                                font-family: "Microsoft YaHei", sans-serif;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+
+                            .mta-top-layer {
+                                display: flex;
+                                justify-content: center;
+                                gap: 30px;
+                                /* Gap between left and right groups */
+                                width: 100%;
+                                margin-bottom: 25px;
+                            }
+
+                            .mta-platform-group {
+                                display: flex;
+                                gap: 15px;
+                            }
+
+                            .mta-platform {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                width: 60px;
+                            }
+
+                            .mta-platform-shape {
+                                width: 40px;
+                                height: 40px;
+                                background: linear-gradient(135deg, #b71c1c, #ff5252);
+                                transform: rotateX(60deg) rotateZ(45deg);
+                                box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+                                border: 1px solid #ff8a80;
+                                margin-top: 5px;
+                            }
+
+                            .mta-platform-text {
+                                font-size: 0.65rem;
+                                color: #fff;
+                                margin-bottom: 5px;
+                                text-shadow: 0 2px 2px #000;
+                            }
+
+                            /* V-Shape simulation using translateY */
+                            .mta-group-left .mta-platform:nth-child(1) {
+                                transform: translateY(-30px);
+                            }
+
+                            .mta-group-left .mta-platform:nth-child(2) {
+                                transform: translateY(-15px);
+                            }
+
+                            .mta-group-left .mta-platform:nth-child(3) {
+                                transform: translateY(0px);
+                            }
+
+                            .mta-group-right .mta-platform:nth-child(1) {
+                                transform: translateY(0px);
+                            }
+
+                            .mta-group-right .mta-platform:nth-child(2) {
+                                transform: translateY(-15px);
+                            }
+
+                            .mta-group-right .mta-platform:nth-child(3) {
+                                transform: translateY(-30px);
+                            }
+
+                            .mta-middle-layer {
+                                position: relative;
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                margin-bottom: 25px;
+                            }
+
+                            .mta-logo-section {
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                position: relative;
+                                z-index: 2;
+                                background: #050505;
+                                /* Hide line behind */
+                                padding: 5px 20px;
+                                border-radius: 30px;
+                                border: 1px solid #333;
+                            }
+
+                            .mta-logo-icon {
+                                width: 40px;
+                                height: 40px;
+                                background: #b71c1c;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border: 2px solid #fff;
+                            }
+
+                            .mta-logo-triangle {
+                                width: 0;
+                                height: 0;
+                                border-left: 8px solid transparent;
+                                border-right: 8px solid transparent;
+                                border-top: 12px solid #fff;
+                            }
+
+                            .mta-title-main {
+                                font-size: 1.3rem;
+                                font-weight: bold;
+                                letter-spacing: 1px;
+                            }
+
+                            .mta-title-sub {
+                                font-size: 0.4rem;
+                                color: #aaa;
+                                letter-spacing: 0.5px;
+                                margin-top: 2px;
+                            }
+
+                            .mta-bottom-layer {
+                                display: flex;
+                                justify-content: space-between;
+                                width: 95%;
+                                font-size: 0.6rem;
+                                color: #ccc;
+                            }
+
+                            .mta-bottom-col {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                text-align: center;
+                            }
+
+                            .mta-bottom-col.left {
+                                text-align: left;
+                            }
+
+                            .mta-bottom-col.right {
+                                text-align: right;
+                            }
+                        </style>
+
+                        <div class="mta-diagram-container">
+                            <!-- Top Platforms -->
+                            <div class="mta-top-layer">
+                                <div class="mta-platform-group mta-group-left">
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">企业</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">协会</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">政府</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                </div>
+                                <div class="mta-platform-group mta-group-right">
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">学术共同体</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">开源社区</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                    <div class="mta-platform">
+                                        <div class="mta-platform-text">高校</div>
+                                        <div class="mta-platform-shape"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Middle Logo & V Line -->
+                            <div class="mta-middle-layer">
+                                <svg style="position: absolute; top: 50%; left: 0; width: 100%; height: 60px; transform: translateY(-50%); z-index: 0; pointer-events: none;"
+                                    viewBox="0 0 400 60" preserveAspectRatio="none">
+                                    <!-- V shape line: Mid-left high, Center low, Mid-right high -->
+                                    <path d="M 0,20 L 200,50 L 400,20" stroke="#ff5252" stroke-width="1" fill="none"
+                                        opacity="0.6" />
+                                </svg>
+
+                                <div class="mta-logo-section">
+                                    <div class="mta-logo-icon">
+                                        <div class="mta-logo-triangle"></div>
+                                    </div>
+                                    <div>
+                                        <div class="mta-title-main">摩尔学院</div>
+                                        <div class="mta-title-sub">MOORE THREADS ACADEMY</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Text -->
+                            <div class="mta-bottom-layer">
+                                <div class="mta-bottom-col">
+                                    <div>开发者成长计划</div>
+                                    <div>前沿探索计划</div>
+                                </div>
+                                <div class="mta-bottom-col">
+                                    <div style="display:flex; gap:10px;">
+                                        <span>KUAE 智算集群算力</span>
+                                        <span>智算终端</span>
+                                        <span>AI 模组</span>
+                                    </div>
+                                </div>
+                                <div class="mta-bottom-col">
+                                    <div>线上学院</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            .mta-next-diagram {
+                                margin-top: 15px;
+                                background: #000;
+                                border: 1px solid #333;
+                                padding: 15px;
+                                font-family: "Microsoft YaHei", sans-serif;
+                            }
+
+                            .mta-next-header {
+                                text-align: center;
+                                font-size: 1.1rem;
+                                color: #fff;
+                                margin-bottom: 15px;
+                                font-weight: bold;
+                            }
+
+                            .ie-content {
+                                display: flex;
+                                gap: 20px;
+                                border-top: 1px solid #333;
+                                padding-top: 15px;
+                            }
+
+                            .ie-left-panel {
+                                flex: 3;
+                                border-right: 1px solid #333;
+                                padding-right: 15px;
+                            }
+
+                            .ie-right-panel {
+                                flex: 2;
+                                padding-left: 10px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                            }
+
+                            .ie-sub-title {
+                                font-size: 0.8rem;
+                                color: #ddd;
+                                margin-bottom: 15px;
+                                text-align: center;
+                            }
+
+                            .ie-uni-grid {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 15px 10px;
+                            }
+
+                            .ie-uni-item {
+                                text-align: center;
+                            }
+
+                            .ie-uni-name {
+                                color: #fff;
+                                font-size: 0.6rem;
+                                font-weight: bold;
+                                margin-bottom: 2px;
+                            }
+
+                            .ie-uni-desc {
+                                color: #888;
+                                font-size: 0.45rem;
+                            }
+
+                            .ie-stats-row {
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: center;
+                            }
+
+                            .ie-stat-item {
+                                text-align: center;
+                            }
+
+                            .ie-stat-num {
+                                font-size: 2.5rem;
+                                color: #ff5722;
+                                font-weight: bold;
+                                line-height: 1;
+                            }
+
+                            .ie-plus {
+                                font-size: 1.2rem;
+                                vertical-align: super;
+                            }
+
+                            .ie-unit {
+                                font-size: 1.2rem;
+                            }
+
+                            .ie-stat-label {
+                                font-size: 0.7rem;
+                                color: #aaa;
+                                margin-top: 5px;
+                            }
+
+                            /* MUSA Styles */
+                            .musa-cards {
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 8px;
+                                border-top: 1px solid #333;
+                                padding-top: 15px;
+                            }
+
+                            .musa-card {
+                                background: linear-gradient(to bottom, #1a1a1a, #000);
+                                border: 1px solid #333;
+                                padding: 10px 5px;
+                                text-align: center;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+
+                            .musa-card-title {
+                                font-size: 0.8rem;
+                                color: #fff;
+                                margin-bottom: 8px;
+                                font-weight: bold;
+                            }
+
+                            .musa-line {
+                                width: 20px;
+                                height: 2px;
+                                background: #b71c1c;
+                                margin-bottom: 8px;
+                            }
+
+                            .musa-card-desc {
+                                font-size: 0.4rem;
+                                color: #aaa;
+                                line-height: 1.4;
+                                text-align: left;
+                            }
+
+                            .highlight-text {
+                                color: #ff5252;
+                                font-weight: bold;
+                            }
+                        </style>
+
+                        <!-- Diagram 2 -->
+                        <div class="mta-next-diagram">
+                            <div class="mta-next-header">产教合作培育人才</div>
+                            <div class="ie-content">
+                                <div class="ie-left-panel">
+                                    <div class="ie-sub-title">名校联合培育高端人才</div>
+                                    <div class="ie-uni-grid">
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">北京大学</div>
+                                            <div class="ie-uni-desc">全国产软硬一体算力装置</div>
+                                        </div>
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">清华大学</div>
+                                            <div class="ie-uni-desc">科研创新算力</div>
+                                        </div>
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">中国科学院大学</div>
+                                            <div class="ie-uni-desc">GPU 教学实践实训</div>
+                                        </div>
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">哈尔滨工业大学 (威海)</div>
+                                            <div class="ie-uni-desc">联合人才培养</div>
+                                        </div>
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">上海交通大学</div>
+                                            <div class="ie-uni-desc">精品课开发及转化</div>
+                                        </div>
+                                        <div class="ie-uni-item">
+                                            <div class="ie-uni-name">浙江大学</div>
+                                            <div class="ie-uni-desc">人工智能通识教育</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ie-right-panel">
+                                    <div class="ie-sub-title">国产计算生态与 AI 教育共建行动</div>
+                                    <div class="ie-stats-row">
+                                        <div class="ie-stat-item">
+                                            <div class="ie-stat-num">200<span class="ie-plus">+</span></div>
+                                            <div class="ie-stat-label">高校覆盖</div>
+                                        </div>
+                                        <div class="ie-stat-item">
+                                            <div class="ie-stat-num">10<span class="ie-unit">万+</span></div>
+                                            <div class="ie-stat-label">学生参与</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diagram 3 -->
+                        <div class="mta-next-diagram">
+                            <div class="mta-next-header">MUSA 开发者计划</div>
+                            <div class="musa-cards">
+                                <div class="musa-card">
+                                    <div class="musa-card-title">星火未来</div>
+                                    <div class="musa-line"></div>
+                                    <div class="musa-card-desc">提供在线学习与实训平台，为<span
+                                            class="highlight-text">摩尔学院用户</span>提供从“学”到“用”的完整路径</div>
+                                </div>
+                                <div class="musa-card">
+                                    <div class="musa-card-title">启航大赛</div>
+                                    <div class="musa-line"></div>
+                                    <div class="musa-card-desc">为各类<span
+                                            class="highlight-text">赛事</span>提供算力、专业指导与资源支持，以实战选拔和培育精英开发者</div>
+                                </div>
+                                <div class="musa-card">
+                                    <div class="musa-card-title">精英开发者</div>
+                                    <div class="musa-line"></div>
+                                    <div class="musa-card-desc">为<span
+                                            class="highlight-text">菁英学子</span>及优秀开发者团队提供算力支撑，助力专业进阶</div>
+                                </div>
+                                <div class="musa-card">
+                                    <div class="musa-card-title">灯塔科学家</div>
+                                    <div class="musa-line"></div>
+                                    <div class="musa-card-desc">为各领域<span
+                                            class="highlight-text">优秀科学家团队</span>提供算力、科研协作等支持</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="cassette-column">
                         <h3>个人开发者装备</h3>
-                        <div class="cassette-row">
-                            <i class="fas fa-laptop-code cassette-icon-amber"></i>
-                            <div>
-                                <div class="cassette-label">MTT AI Book (算力本)</div>
-                                <div class="cassette-desc">多系统切换/开发Agent/Code-to-MOS转换。</div>
+                        <!-- MTT AI Book Section -->
+                        <style>
+                            .mtt-book-section {
+                                margin-bottom: 20px;
+                                border: 1px solid #333;
+                                background: #000;
+                                padding: 10px;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+                                border-radius: 4px;
+                                /* Optional rounding */
+                            }
+
+                            .mtt-header-row {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                padding-bottom: 5px;
+                                border-bottom: 1px solid #333;
+                            }
+
+                            .mtt-icon-box {
+                                width: 30px;
+                                height: 30px;
+                                background: linear-gradient(135deg, #ffca28, #ff8f00);
+                                /* Amber gradient */
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 4px;
+                                color: #000;
+                                font-size: 0.9rem;
+                                box-shadow: 0 0 5px rgba(255, 143, 0, 0.4);
+                            }
+
+                            /* Diagram 1: Multi System - Enhanced */
+                            .mtt-sys-banner {
+                                position: relative;
+                                padding: 15px;
+                                background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+                                overflow: hidden;
+                                border: 1px solid #333;
+                                border-radius: 4px;
+                            }
+
+                            /* Glowing light effect from top */
+                            .mtt-sys-banner::before {
+                                content: "";
+                                position: absolute;
+                                top: -50px;
+                                left: 50%;
+                                transform: translateX(-50%);
+                                width: 200px;
+                                height: 100px;
+                                background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+                                pointer-events: none;
+                            }
+
+                            .mtt-sys-title {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                color: #fff;
+                                line-height: 1.2;
+                                margin-bottom: 3px;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .mtt-sys-subtitle {
+                                font-size: 0.7rem;
+                                color: #ccc;
+                                margin-bottom: 10px;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .mtt-red-line {
+                                width: 25px;
+                                height: 2px;
+                                background: #f44336;
+                                margin-bottom: 12px;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .mtt-os-grid {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 6px;
+                                width: 65%;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .mtt-os-btn {
+                                border: 1px solid rgba(255, 255, 255, 0.2);
+                                background: rgba(0, 0, 0, 0.5);
+                                color: #ddd;
+                                padding: 4px 2px;
+                                font-size: 0.45rem;
+                                text-align: center;
+                                backdrop-filter: blur(2px);
+                                transition: all 0.3s ease;
+                            }
+
+                            .mtt-os-btn:hover {
+                                border-color: #ff9800;
+                                color: #fff;
+                            }
+
+                            /* Abstract Laptop */
+                            .mtt-laptop-bg {
+                                position: absolute;
+                                right: -15px;
+                                top: 25px;
+                                width: 110px;
+                                height: 75px;
+                                background: #222;
+                                border: 2px solid #444;
+                                border-radius: 4px;
+                                transform: perspective(600px) rotateY(-20deg);
+                                box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.8);
+                                z-index: 1;
+                            }
+
+                            /* Screen glow */
+                            .mtt-laptop-bg::after {
+                                content: "";
+                                position: absolute;
+                                top: 5%;
+                                left: 5%;
+                                width: 90%;
+                                height: 80%;
+                                background: linear-gradient(135deg, #0d47a1, #000);
+                                opacity: 0.8;
+                            }
+
+
+                            /* Diagram 2: Specs - Enhanced */
+                            .mtt-env-container {
+                                padding: 12px;
+                                background: #0a0a0a;
+                                border: 1px solid #333;
+                                border-radius: 4px;
+                            }
+
+                            .mtt-env-title {
+                                font-size: 0.8rem;
+                                text-align: center;
+                                color: #fff;
+                                margin-bottom: 12px;
+                                font-weight: bold;
+                                text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+                            }
+
+                            .mtt-feature-list {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                gap: 12px 8px;
+                            }
+
+                            .mtt-feature-item {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 2px;
+                            }
+
+                            .mtt-feature-head {
+                                display: flex;
+                                align-items: center;
+                                gap: 6px;
+                                font-size: 0.55rem;
+                                font-weight: bold;
+                                color: #fff;
+                                margin-bottom: 2px;
+                            }
+
+                            .mtt-arrow-icon {
+                                width: 0;
+                                height: 0;
+                                border-left: 6px solid #ff5722;
+                                border-top: 4px solid transparent;
+                                border-bottom: 4px solid transparent;
+                            }
+
+                            .mtt-feature-desc {
+                                font-size: 0.4rem;
+                                color: #999;
+                                padding-left: 10px;
+                                line-height: 1.35;
+                            }
+                        </style>
+
+                        <div class="mtt-book-section">
+                            <div class="mtt-header-row">
+                                <div class="mtt-icon-box"><i class="fas fa-laptop-code"></i></div>
+                                <div class="cassette-label text-amber">MTT AI Book (算力本)</div>
+                            </div>
+
+                            <!-- Diagram 1 -->
+                            <div class="mtt-sys-banner">
+                                <div class="mtt-sys-title">多系统随心换</div>
+                                <div class="mtt-sys-subtitle">开发 办公 娱乐新体验</div>
+                                <div class="mtt-red-line"></div>
+                                <div class="mtt-os-grid">
+                                    <div class="mtt-os-btn">MT AIOS (Linux)</div>
+                                    <div class="mtt-os-btn">Windows 虚拟机</div>
+                                    <div class="mtt-os-btn">Android 容器</div>
+                                    <div class="mtt-os-btn">国产操作系统</div>
+                                </div>
+                                <div class="mtt-laptop-bg"></div>
+                            </div>
+
+                            <!-- Diagram 2 -->
+                            <div class="mtt-env-container">
+                                <div class="mtt-env-title">开箱即用的 AI 开发环境<br><span
+                                        style="font-size: 0.6rem; color: #888; font-weight: normal;">快速搭建智能体</span>
+                                </div>
+                                <div class="mtt-feature-list">
+                                    <div class="mtt-feature-item">
+                                        <div class="mtt-feature-head">
+                                            <div class="mtt-arrow-icon"></div>硬核配置
+                                        </div>
+                                        <div class="mtt-feature-desc">50TOPS 异构算力<br>32G/64G 内存<br>1TB SSD</div>
+                                    </div>
+                                    <div class="mtt-feature-item">
+                                        <div class="mtt-feature-head">
+                                            <div class="mtt-arrow-icon"></div>专业环境
+                                        </div>
+                                        <div class="mtt-feature-desc">MT AIOS (定制Linux)<br>主流工具/框架<br>GPU Driver</div>
+                                    </div>
+                                    <div class="mtt-feature-item">
+                                        <div class="mtt-feature-head">
+                                            <div class="mtt-arrow-icon"></div>简化部署
+                                        </div>
+                                        <div class="mtt-feature-desc">支持 Docker<br>Toolkit工具包<br>预置 Docker 镜像</div>
+                                    </div>
+                                    <div class="mtt-feature-item">
+                                        <div class="mtt-feature-head">
+                                            <div class="mtt-arrow-icon"></div>预装工具
+                                        </div>
+                                        <div class="mtt-feature-desc">VS Code, Jupyter<br>Python, PyTorch<br>vLLM,
+                                            Pandas</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- MusaCode Section -->
+                        <style>
+                            .musa-code-block {
+                                margin-top: 15px;
+                                margin-bottom: 15px;
+                                border: 1px solid #333;
+                                background: radial-gradient(circle at top right, #1a1a1a, #000);
+                                padding: 15px;
+                                border-radius: 6px;
+                                position: relative;
+                                overflow: hidden;
+                            }
+
+                            .musa-code-header {
+                                margin-bottom: 15px;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .musa-title-row {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+                                margin-bottom: 5px;
+                            }
+
+                            .musa-main-title {
+                                font-size: 1.1rem;
+                                font-weight: bold;
+                                color: #fff;
+                            }
+
+                            .musa-badge {
+                                background: #b71c1c;
+                                color: #fff;
+                                font-size: 0.6rem;
+                                padding: 2px 8px;
+                                border-radius: 4px;
+                                font-weight: bold;
+                            }
+
+                            .musa-sub-title {
+                                font-size: 0.75rem;
+                                color: #aaa;
+                            }
+
+                            .musa-content-grid {
+                                display: grid;
+                                grid-template-columns: 0.8fr 1.2fr;
+                                gap: 15px;
+                                z-index: 2;
+                                position: relative;
+                            }
+
+                            .musa-col-title {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                color: #fff;
+                                border-bottom: 3px solid #b71c1c;
+                                display: inline-block;
+                                padding-bottom: 3px;
+                                margin-bottom: 12px;
+                            }
+
+                            .musa-metric-row {
+                                display: flex;
+                                flex-direction: column;
+                                margin-bottom: 10px;
+                            }
+
+                            .musa-metric-label {
+                                font-size: 0.7rem;
+                                color: #ccc;
+                                margin-bottom: 2px;
+                            }
+
+                            .musa-metric-val {
+                                font-size: 1.3rem;
+                                font-weight: bold;
+                                color: #fff;
+                                font-family: 'Segoe UI', sans-serif;
+                            }
+
+                            .musa-list-item {
+                                font-size: 0.7rem;
+                                color: #ccc;
+                                margin-bottom: 6px;
+                                padding-left: 12px;
+                                position: relative;
+                                line-height: 1.3;
+                            }
+
+                            .musa-list-item::before {
+                                content: "▶";
+                                font-size: 0.5rem;
+                                color: #b71c1c;
+                                position: absolute;
+                                left: 0;
+                                top: 4px;
+                            }
+
+                            .musa-tag {
+                                font-size: 0.5rem;
+                                color: #888;
+                                margin-left: 5px;
+                                border: 1px solid #444;
+                                padding: 0 4px;
+                                border-radius: 3px;
+                                white-space: nowrap;
+                                display: inline-block;
+                                transform: scale(0.9);
+                            }
+
+                            /* Laptop Simulation */
+                            .musa-laptop-right {
+                                position: absolute;
+                                right: -30px;
+                                bottom: -20px;
+                                width: 180px;
+                                height: 120px;
+                                opacity: 0.15;
+                                z-index: 1;
+                                pointer-events: none;
+                            }
+                        </style>
+
+                        <div class="musa-code-block">
+                            <div class="musa-code-header">
+                                <div class="musa-title-row">
+                                    <div class="musa-badge">在研</div>
+                                    <div class="musa-main-title">MusaCode 代码生成大模型</div>
+                                </div>
+                                <div class="musa-sub-title">让 MUSA GPU 编程像用 Python 一样简单</div>
+                            </div>
+
+                            <div class="musa-content-grid">
+                                <!-- Left: CUDA to MUSA -->
+                                <div>
+                                    <div class="musa-col-title">CUDA to MUSA</div>
+                                    <div class="musa-metric-row">
+                                        <span class="musa-metric-label">可编译率</span>
+                                        <span class="musa-metric-val">&gt; 93%</span>
+                                    </div>
+                                    <div class="musa-metric-row">
+                                        <span class="musa-metric-label">准确率</span>
+                                        <span class="musa-metric-val">&gt; 90%</span>
+                                    </div>
+                                </div>
+
+                                <!-- Right: Text to MUSA -->
+                                <div>
+                                    <div class="musa-col-title">Text to MUSA</div>
+                                    <div class="musa-metric-row">
+                                        <span class="musa-metric-label">Kernel Gen 准确率</span>
+                                        <span class="musa-metric-val">&gt; 90%</span>
+                                    </div>
+                                    <div class="musa-list-item">硬件感知的强化学习策略</div>
+                                    <div class="musa-list-item">自研 URPO 多数据混合训练 <span class="musa-tag">AAAI 2026</span>
+                                    </div>
+                                    <div class="musa-list-item">Multi-task / Multi-role RL 策略</div>
+                                    <div class="musa-list-item">自研 TurboRAG 信息增强 <span class="musa-tag">EMNLP
+                                            2025</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Decorative Laptop graphic -->
+                            <svg class="musa-laptop-right" viewBox="0 0 100 80">
+                                <rect x="10" y="10" width="80" height="50" rx="2" fill="#333" stroke="#555"
+                                    stroke-width="1" />
+                                <rect x="15" y="15" width="70" height="40" fill="#000" />
+                                <path d="M 0,65 L 100,65 L 90,75 L 10,75 Z" fill="#444" />
+                                <line x1="20" y1="20" x2="60" y2="20" stroke="#555" stroke-width="2" />
+                                <line x1="20" y1="25" x2="50" y2="25" stroke="#555" stroke-width="2" />
+                                <line x1="20" y1="30" x2="70" y2="30" stroke="#555" stroke-width="2" />
+                                <line x1="20" y1="35" x2="60" y2="35" stroke="#555" stroke-width="2" />
+                                <line x1="20" y1="40" x2="55" y2="40" stroke="#555" stroke-width="2" />
+                            </svg>
+                        </div>
+
                         <div class="cassette-row">
                             <i class="fas fa-desktop cassette-icon-amber"></i>
                             <div>
@@ -10094,24 +11712,303 @@
                 <div style="width: 100%; max-width: 1300px;">
                     <h3 style="text-align: center; border-bottom: none; font-size: 1.8rem; margin-bottom: 2rem;">
                         本次发布核心成果</h3>
-                    <div
-                        style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 3rem;">
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">架构“花港”</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">“华山”/“庐山”</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">“KUAE”万卡集群</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">MTT
-                            C256</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">“长江”SOC</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">具身智能平台</span>
-                        <span
-                            style="background: #333; padding: 10px 20px; border-radius: 20px; border: 1px solid var(--accent-cyan); color: #fff;">MTT
-                            AI Book</span>
+                    <style>
+                        .achi-gallery {
+                            display: flex;
+                            justify-content: center;
+                            gap: 10px;
+                            margin-bottom: 3rem;
+                            overflow-x: auto;
+                            padding-bottom: 10px;
+                        }
+
+                        .achi-item {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 15px;
+                            width: 100px;
+                        }
+
+                        .achi-title {
+                            font-size: 0.8rem;
+                            color: #fff;
+                            font-family: "Microsoft YaHei", sans-serif;
+                            font-weight: bold;
+                            letter-spacing: 1px;
+                        }
+
+                        .achi-card {
+                            width: 100px;
+                            height: 100px;
+                            background: #000;
+                            border: 1px solid #444;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            overflow: hidden;
+                        }
+
+                        /* Visuals */
+                        /* 1. HuaGang - Landscape */
+                        .vis-huagang {
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(to bottom, #87CEEB 0%, #E0F7FA 50%, #0277BD 51%, #01579B 100%);
+                            position: relative;
+                        }
+
+                        .vis-huagang::after {
+                            content: "";
+                            position: absolute;
+                            bottom: 20%;
+                            right: 10%;
+                            width: 20px;
+                            height: 30px;
+                            background: #333;
+                            box-shadow: -5px 5px 0 #222;
+                            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                        }
+
+                        /* 2. HuaShan - Chip Gold */
+                        .vis-chip-gold {
+                            width: 70px;
+                            height: 70px;
+                            background: radial-gradient(circle, #ffd700, #b8860b);
+                            border: 2px solid #fff;
+                            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 2px;
+                            padding: 5px;
+                        }
+
+                        .vis-chip-cell {
+                            background: rgba(0, 0, 0, 0.2);
+                        }
+
+                        /* 3. LuShan - Chip Silver */
+                        .vis-chip-silver {
+                            width: 70px;
+                            height: 70px;
+                            background: radial-gradient(circle, #e0e0e0, #9e9e9e);
+                            border: 2px solid #fff;
+                            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+                            display: grid;
+                            grid-template-columns: repeat(8, 1fr);
+                            gap: 1px;
+                            padding: 4px;
+                        }
+
+                        /* 4. KUAE - Rack */
+                        .vis-kuae {
+                            width: 80px;
+                            height: 70px;
+                            display: flex;
+                            gap: 4px;
+                            border: 1px solid #555;
+                            padding: 2px;
+                            background: #111;
+                        }
+
+                        .vis-rack-col {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 2px;
+                        }
+
+                        .vis-rack-unit {
+                            flex: 1;
+                            background: #333;
+                            border-top: 1px solid #555;
+                        }
+
+                        /* 5. ChangJiang - SoC */
+                        .vis-soc {
+                            width: 70px;
+                            height: 70px;
+                            background: #111;
+                            border: 2px solid #b8860b;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                        }
+
+                        .vis-soc::before {
+                            content: "SOC";
+                            color: #666;
+                            font-size: 0.6rem;
+                            font-weight: bold;
+                        }
+
+                        .vis-soc-corner {
+                            position: absolute;
+                            width: 10px;
+                            height: 10px;
+                            border-left: 2px solid #b8860b;
+                            border-top: 2px solid #b8860b;
+                            top: 2px;
+                            left: 2px;
+                        }
+
+                        /* 6. Robot */
+                        .vis-robot-box {
+                            color: #ddd;
+                            font-size: 2.5rem;
+                        }
+
+                        /* 7. AIBOOK - Laptop */
+                        .vis-laptop {
+                            width: 70px;
+                            height: 50px;
+                            position: relative;
+                            perspective: 200px;
+                        }
+
+                        .vis-lap-screen {
+                            width: 60px;
+                            height: 40px;
+                            background: #ccc;
+                            margin: 0 auto;
+                            border: 2px solid #fff;
+                            position: relative;
+                            transform: rotateX(-10deg);
+                        }
+
+                        .vis-lap-base {
+                            width: 70px;
+                            height: 5px;
+                            background: #fff;
+                            position: absolute;
+                            bottom: 0;
+                            border-radius: 2px;
+                        }
+
+                        /* 8. AICube - Cube */
+                        .vis-cube {
+                            width: 40px;
+                            height: 40px;
+                            background: #607d8b;
+                            box-shadow: 5px 5px 0 #37474f;
+                            position: relative;
+                        }
+
+                        .vis-cube::after {
+                            content: "|";
+                            color: #fff;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+
+                        /* 9. Academy - Book */
+                        .vis-book {
+                            width: 60px;
+                            height: 40px;
+                            background: #ffcc80;
+                            border-radius: 2px 10px 10px 2px;
+                            box-shadow: inset 5px 0 10px rgba(0, 0, 0, 0.1);
+                            border-left: 4px solid #e65100;
+                            position: relative;
+                            top: 10px;
+                        }
+
+                        .vis-cap {
+                            width: 40px;
+                            height: 20px;
+                            background: #222;
+                            position: absolute;
+                            top: -15px;
+                            right: -5px;
+                            transform: rotate(-10deg);
+                            border-bottom: 2px solid #555;
+                        }
+                    </style>
+
+                    <div class="achi-gallery">
+                        <div class="achi-item">
+                            <div class="achi-title">花港</div>
+                            <div class="achi-card">
+                                <div class="vis-huagang"></div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">华山</div>
+                            <div class="achi-card">
+                                <div class="vis-chip-gold">
+                                    <div class="vis-chip-cell"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">庐山</div>
+                            <div class="achi-card">
+                                <div class="vis-chip-silver"></div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">KUAE</div>
+                            <div class="achi-card">
+                                <div class="vis-kuae">
+                                    <div class="vis-rack-col">
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                    </div>
+                                    <div class="vis-rack-col">
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                    </div>
+                                    <div class="vis-rack-col">
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                        <div class="vis-rack-unit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">长江</div>
+                            <div class="achi-card">
+                                <div class="vis-soc">
+                                    <div class="vis-soc-corner"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">具身智能</div>
+                            <div class="achi-card">
+                                <i class="fas fa-dog vis-robot-box"></i>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">AIBOOK</div>
+                            <div class="achi-card">
+                                <div class="vis-laptop">
+                                    <div class="vis-lap-screen"></div>
+                                    <div class="vis-lap-base"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">AICube</div>
+                            <div class="achi-card">
+                                <div class="vis-cube"></div>
+                            </div>
+                        </div>
+                        <div class="achi-item">
+                            <div class="achi-title">摩尔学院</div>
+                            <div class="achi-card">
+                                <div class="vis-book">
+                                    <div class="vis-cap"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="border-top: 2px dashed #555; padding-top: 2rem; margin-top: 2rem;">
@@ -10124,9 +12021,322 @@
                             推动国产GPU技术走向国际前列
                         </p>
                     </div>
+
+                    <div style="border-top: 2px dashed #555; padding-top: 2rem; margin-top: 2rem;">
+                        <h3 style="text-align: center; border: none; font-size: 2rem; color: var(--accent-amber);">
+                            个人参会感悟</h3>
+                        <p style="font-size: 1.4rem; color: #ddd; line-height: 1.6;">
+                            支持国产GPU
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- PART XII: Ending -->
+    <section class="reveal" id="slide-end" data-title="结束页">
+        <div class="end-container">
+            <div class="scanline"></div>
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="THANKS FOR WATCHING">THANKS FOR WATCHING</h1>
+            </div>
+            <div class="sub-glitch">MOORE THREADS & Amazing Seasun // AI COMPUTING</div>
+
+            <div class="shutdown-sequence">
+                <div class="cmd-line">> INITIATING SYSTEM SHUTDOWN...</div>
+                <div class="cmd-line">> SAVING SESSION DATA... [OK]</div>
+                <div class="cmd-line">> DISCONNECTING NEURAL LINK... [OK]</div>
+                <div class="cmd-line">> TERMINATING...</div>
+                <div class="blinking-cursor">_</div>
+            </div>
+
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+
+        <style>
+            /* Specific overrides for this slide when active */
+            /* We use .active to ensure it only applies when visible, and doesn't override the default display:none */
+            #slide-end.active {
+                display: flex !important;
+                /* Force flex when active */
+                align-items: center;
+                justify-content: center;
+                background: #000;
+                overflow: hidden;
+            }
+
+            /* Background needs to be set even if not active? No, default is transparent */
+            /* But we want to ensure the black background is there */
+            #slide-end {
+                background: #008000;
+                /* Debug color? No, use black */
+                background: #000;
+            }
+
+            .end-container {
+                text-align: center;
+                position: relative;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Glitch Effect */
+            .glitch-wrapper {
+                margin-bottom: 20px;
+            }
+
+            .glitch {
+                font-size: 4rem;
+                font-weight: bold;
+                color: #fff;
+                text-transform: uppercase;
+                position: relative;
+                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
+                animation: glitch-skew 1s infinite linear alternate-reverse;
+            }
+
+            .glitch::before,
+            .glitch::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .glitch::before {
+                left: 2px;
+                text-shadow: -1px 0 #ff00c1;
+                clip: rect(44px, 450px, 56px, 0);
+                animation: glitch-anim 5s infinite linear alternate-reverse;
+            }
+
+            .glitch::after {
+                left: -2px;
+                text-shadow: -1px 0 #00fff9;
+                clip: rect(44px, 450px, 56px, 0);
+                animation: glitch-anim2 1s infinite linear alternate-reverse;
+            }
+
+            @keyframes glitch-anim {
+                0% {
+                    clip: rect(30px, 9999px, 10px, 0);
+                }
+
+                20% {
+                    clip: rect(80px, 9999px, 90px, 0);
+                }
+
+                40% {
+                    clip: rect(10px, 9999px, 50px, 0);
+                }
+
+                60% {
+                    clip: rect(60px, 9999px, 20px, 0);
+                }
+
+                80% {
+                    clip: rect(40px, 9999px, 70px, 0);
+                }
+
+                100% {
+                    clip: rect(90px, 9999px, 30px, 0);
+                }
+            }
+
+            @keyframes glitch-anim2 {
+                0% {
+                    clip: rect(10px, 9999px, 80px, 0);
+                }
+
+                20% {
+                    clip: rect(50px, 9999px, 10px, 0);
+                }
+
+                40% {
+                    clip: rect(90px, 9999px, 60px, 0);
+                }
+
+                60% {
+                    clip: rect(20px, 9999px, 40px, 0);
+                }
+
+                80% {
+                    clip: rect(70px, 9999px, 30px, 0);
+                }
+
+                100% {
+                    clip: rect(30px, 9999px, 90px, 0);
+                }
+            }
+
+            .sub-glitch {
+                font-size: 1.5rem;
+                color: #00ff00;
+                letter-spacing: 5px;
+                margin-bottom: 50px;
+                font-family: 'Courier New', monospace;
+                border-right: 2px solid #00ff00;
+                white-space: nowrap;
+                overflow: hidden;
+                animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+                width: fit-content;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0
+                }
+
+                to {
+                    width: 100%
+                }
+            }
+
+            @keyframes blink-caret {
+
+                from,
+                to {
+                    border-color: transparent
+                }
+
+                50% {
+                    border-color: #00ff00;
+                }
+            }
+
+            /* Terminal Output */
+            .shutdown-sequence {
+                text-align: left;
+                font-family: 'Courier New', monospace;
+                color: #aaa;
+                font-size: 1.1rem;
+                margin-bottom: 50px;
+                /* Matches roughly the longest line length to ensure visual centering */
+                width: 42ch;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .cmd-line {
+                overflow: hidden;
+                white-space: nowrap;
+                margin-bottom: 8px;
+                width: 0;
+                border-right: 0.5rem solid transparent;
+                line-height: 1.5;
+            }
+
+            /* Typewriter Animation Sequences */
+            .cmd-line:nth-child(1) {
+                --target-width: 33ch;
+                animation: type-cmd 1.5s steps(33, end) 1s forwards, cmd-caret 1.5s step-end 1s;
+            }
+
+            .cmd-line:nth-child(2) {
+                --target-width: 31ch;
+                animation: type-cmd 1.5s steps(31, end) 2.6s forwards, cmd-caret 1.5s step-end 2.6s;
+            }
+
+            .cmd-line:nth-child(3) {
+                --target-width: 37ch;
+                animation: type-cmd 1.8s steps(37, end) 4.2s forwards, cmd-caret 1.8s step-end 4.2s;
+            }
+
+            .cmd-line:nth-child(4) {
+                --target-width: 18ch;
+                animation: type-cmd 0.8s steps(18, end) 6.1s forwards, cmd-caret 0.8s step-end 6.1s;
+            }
+
+            @keyframes type-cmd {
+                from {
+                    width: 0;
+                }
+
+                to {
+                    width: var(--target-width);
+                }
+            }
+
+            @keyframes cmd-caret {
+
+                0%,
+                100% {
+                    border-right-color: transparent;
+                }
+
+                50% {
+                    border-right-color: #00ff00;
+                }
+            }
+
+            /* Main Blinking Cursor (Bottom) */
+            .blinking-cursor {
+                display: inline-block;
+                width: 10px;
+                height: 15px;
+                background: #00ff00;
+                animation: blink 1s infinite;
+            }
+
+            @keyframes blink {
+
+                0%,
+                100% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                }
+            }
+
+            /* Loader */
+            .loader-bar {
+                width: 300px;
+                height: 4px;
+                background: #333;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .loader-progress {
+                width: 100%;
+                height: 100%;
+                background: #00ff00;
+                transform: translateX(-100%);
+                animation: load-progress 5s ease-in-out forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes load-progress {
+                to {
+                    transform: translateX(0);
+                }
+            }
+
+            /* Scanline */
+            .scanline {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+                background-size: 100% 4px;
+                pointer-events: none;
+                z-index: 20;
+            }
+        </style>
     </section>
 
     <!-- PART I: Introduction -->
@@ -18856,276 +21066,7 @@
         </div>
     </section>
 
-    <!-- PART XII: Ending -->
-    <section class="reveal" id="slide-end" data-title="结束页">
-        <div class="end-container">
-            <div class="scanline"></div>
-            <div class="glitch-wrapper">
-                <h1 class="glitch" data-text="THANKS FOR WATCHING">THANKS FOR WATCHING</h1>
-            </div>
-            <div class="sub-glitch">MOORE THREADS // AI COMPUTING</div>
 
-            <div class="shutdown-sequence">
-                <div class="cmd-line">> INITIATING SYSTEM SHUTDOWN...</div>
-                <div class="cmd-line">> SAVING SESSION DATA... [OK]</div>
-                <div class="cmd-line">> DISCONNECTING NEURAL LINK... [OK]</div>
-                <div class="cmd-line">> TERMINATING...</div>
-                <div class="blinking-cursor">_</div>
-            </div>
-
-            <div class="loader-bar">
-                <div class="loader-progress"></div>
-            </div>
-        </div>
-
-        <style>
-            #slide-end {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #000;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .end-container {
-                text-align: center;
-                position: relative;
-                z-index: 10;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Glitch Effect */
-            .glitch-wrapper {
-                margin-bottom: 20px;
-            }
-
-            .glitch {
-                font-size: 4rem;
-                font-weight: bold;
-                color: #fff;
-                text-transform: uppercase;
-                position: relative;
-                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
-                animation: glitch-skew 1s infinite linear alternate-reverse;
-            }
-
-            .glitch::before,
-            .glitch::after {
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            .glitch::before {
-                left: 2px;
-                text-shadow: -1px 0 #ff00c1;
-                clip: rect(44px, 450px, 56px, 0);
-                animation: glitch-anim 5s infinite linear alternate-reverse;
-            }
-
-            .glitch::after {
-                left: -2px;
-                text-shadow: -1px 0 #00fff9;
-                clip: rect(44px, 450px, 56px, 0);
-                animation: glitch-anim2 1s infinite linear alternate-reverse;
-            }
-
-            @keyframes glitch-anim {
-                0% {
-                    clip: rect(30px, 9999px, 10px, 0);
-                }
-
-                20% {
-                    clip: rect(80px, 9999px, 90px, 0);
-                }
-
-                40% {
-                    clip: rect(10px, 9999px, 50px, 0);
-                }
-
-                60% {
-                    clip: rect(60px, 9999px, 20px, 0);
-                }
-
-                80% {
-                    clip: rect(40px, 9999px, 70px, 0);
-                }
-
-                100% {
-                    clip: rect(90px, 9999px, 30px, 0);
-                }
-            }
-
-            @keyframes glitch-anim2 {
-                0% {
-                    clip: rect(10px, 9999px, 80px, 0);
-                }
-
-                20% {
-                    clip: rect(50px, 9999px, 10px, 0);
-                }
-
-                40% {
-                    clip: rect(90px, 9999px, 60px, 0);
-                }
-
-                60% {
-                    clip: rect(20px, 9999px, 40px, 0);
-                }
-
-                80% {
-                    clip: rect(70px, 9999px, 30px, 0);
-                }
-
-                100% {
-                    clip: rect(30px, 9999px, 90px, 0);
-                }
-            }
-
-            .sub-glitch {
-                font-size: 1.5rem;
-                color: #00ff00;
-                letter-spacing: 5px;
-                margin-bottom: 50px;
-                font-family: 'Courier New', monospace;
-                border-right: 2px solid #00ff00;
-                white-space: nowrap;
-                overflow: hidden;
-                animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
-                width: fit-content;
-            }
-
-            @keyframes typing {
-                from {
-                    width: 0
-                }
-
-                to {
-                    width: 100%
-                }
-            }
-
-            @keyframes blink-caret {
-
-                from,
-                to {
-                    border-color: transparent
-                }
-
-                50% {
-                    border-color: #00ff00;
-                }
-            }
-
-            /* Terminal Output */
-            .shutdown-sequence {
-                text-align: left;
-                font-family: 'Courier New', monospace;
-                color: #aaa;
-                font-size: 1rem;
-                margin-bottom: 40px;
-                width: 500px;
-            }
-
-            .cmd-line {
-                margin-bottom: 5px;
-                opacity: 0;
-                animation: fade-in 0.5s forwards;
-            }
-
-            .cmd-line:nth-child(1) {
-                animation-delay: 1s;
-            }
-
-            .cmd-line:nth-child(2) {
-                animation-delay: 2s;
-            }
-
-            .cmd-line:nth-child(3) {
-                animation-delay: 3s;
-            }
-
-            .cmd-line:nth-child(4) {
-                animation-delay: 4s;
-            }
-
-            @keyframes fade-in {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
-            .blinking-cursor {
-                display: inline-block;
-                width: 10px;
-                height: 15px;
-                background: #00ff00;
-                animation: blink 1s infinite;
-            }
-
-            @keyframes blink {
-
-                0%,
-                100% {
-                    opacity: 1;
-                }
-
-                50% {
-                    opacity: 0;
-                }
-            }
-
-            /* Loader */
-            .loader-bar {
-                width: 300px;
-                height: 4px;
-                background: #333;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .loader-progress {
-                width: 100%;
-                height: 100%;
-                background: #00ff00;
-                transform: translateX(-100%);
-                animation: load-progress 5s ease-in-out forwards;
-                animation-delay: 1s;
-            }
-
-            @keyframes load-progress {
-                to {
-                    transform: translateX(0);
-                }
-            }
-
-            /* Scanline */
-            .scanline {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
-                background-size: 100% 4px;
-                pointer-events: none;
-                z-index: 20;
-            }
-        </style>
-    </section>
 
     </div>
 
@@ -20501,6 +22442,114 @@
         })();
 
     </script>
+
+    <style>
+        /* [USER REQUEST]: Special Adjustments for First 12 Pages */
+
+        /* 1. Consistent Paragraph Titles (h3) */
+        .container>section.reveal:nth-of-type(-n+12) h3 {
+            font-size: 1.8rem !important;
+            color: var(--accent-amber) !important;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.4) !important;
+            border-bottom: 2px dashed rgba(255, 193, 7, 0.4) !important;
+            padding-bottom: 0.6rem !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            font-weight: bold !important;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            width: 100%;
+        }
+
+        /* 2. Increase Diagram Text Size (Approx 1.5x) */
+        /* We use a filtered selector to target text within diagram containers */
+        /* Using 120-130% relative scaling to avoid breaking layout grids, effectively looks like 1.5x in context */
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .arch-box,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .arch-label,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .arch-list-item,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .b-label-top,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .b-desc-mid,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .t-label-main,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .t-chip-text,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .gp-desc,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .gp-unit,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .phys-step-desc,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .mt-dev-desc,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .fs-card-desc,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .logic-gate,
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card .fs-card-title {
+            font-size: 1.25em !important;
+            line-height: 1.4 !important;
+            font-weight: bold;
+        }
+
+        /* Force small tag text to be readable */
+        .container>section.reveal:nth-of-type(-n+12) span[style*="font-size: 0.5"],
+        .container>section.reveal:nth-of-type(-n+12) div[style*="font-size: 0.5"] {
+            font-size: 0.75rem !important;
+        }
+
+        /* 3. Mouse Interaction: Hover Tilt & Glow */
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card,
+        .container>section.reveal:nth-of-type(-n+12) .fs-card,
+        .container>section.reveal:nth-of-type(-n+12) .content-grid>div,
+        .container>section.reveal:nth-of-type(-n+12) .arch-container {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card:hover,
+        .container>section.reveal:nth-of-type(-n+12) .fs-card:hover,
+        .container>section.reveal:nth-of-type(-n+12) .content-grid>div:hover,
+        .container>section.reveal:nth-of-type(-n+12) .arch-container:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 0 35px rgba(33, 255, 255, 0.3), inset 0 0 20px rgba(33, 255, 255, 0.1) !important;
+            border-color: var(--accent-cyan) !important;
+            z-index: 50;
+        }
+
+        /* 4. Periodic Metallic Pulse Border */
+        @keyframes metallic-pulse-periodic {
+
+            0%,
+            70% {
+                border-color: #444;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+            }
+
+            85% {
+                border-color: #ccc;
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.1);
+            }
+
+            100% {
+                border-color: #444;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        /* Apply to main containers */
+        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card,
+        .container>section.reveal:nth-of-type(-n+12) .fs-card,
+        .container>section.reveal:nth-of-type(-n+12) .content-grid>div,
+        .container>section.reveal:nth-of-type(-n+12) .arch-container {
+            animation: metallic-pulse-periodic 5s infinite ease-in-out;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        /* Staggered animations for cards */
+        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(2) {
+            animation-delay: 2.0s;
+        }
+
+        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(3) {
+            animation-delay: 3.5s;
+        }
+    </style>
 </body>
 
 </html>
