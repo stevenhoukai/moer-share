@@ -323,7 +323,7 @@
                 inset 0 0 15px rgba(255, 193, 7, 0.3);
             padding-left: 24px;
             /* Mechanical slide effect */
-            text-shadow: 0 0 10px var(--accent-amber), 0 0 20px #fff;
+            text-shadow: none;
             letter-spacing: 4px;
             border-color: #fff;
         }
@@ -1625,7 +1625,7 @@
 
         .nav-link:hover::before {
             opacity: 1;
-            text-shadow: 0 0 5px var(--accent-cyan);
+            text-shadow: none;
         }
 
         /* Custom Cursor Container - Handles Position Only */
@@ -1653,12 +1653,12 @@
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-            mix-blend-mode: difference;
-            box-shadow: 0 0 8px var(--accent-green), inset 0 0 5px rgba(51, 255, 51, 0.2);
+            mix-blend-mode: normal; /* Was difference - removed for clarity */
+            box-shadow: none; /* Was glow - removed for clarity */
             z-index: 2;
         }
 
-        /* CRT Scan Effect Layer */
+        /* CRT Scan Effect Layer - Disabled per user request */
         .cursor-scan {
             position: absolute;
             top: 0;
@@ -1667,30 +1667,28 @@
             height: 80px;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            background: repeating-linear-gradient(to bottom,
+            /* Remove interfering background pattern */
+            background: none; 
+            /* background: repeating-linear-gradient(to bottom,
                     transparent 0px,
                     transparent 2px,
                     rgba(51, 255, 51, 0.2) 2px,
-                    rgba(51, 255, 51, 0.2) 4px);
+                    rgba(51, 255, 51, 0.2) 4px); */
             background-size: 100% 8px;
             animation: scan-scroll 0.5s linear infinite;
             pointer-events: none;
             z-index: 1;
-            backdrop-filter: contrast(1.2) brightness(1.1) blur(0.5px);
-            mix-blend-mode: hard-light;
-            opacity: 0.6;
+            /* backdrop-filter: contrast(1.2) brightness(1.1) blur(0.5px); */
+            mix-blend-mode: normal; /* Was hard-light */
+            opacity: 0; /* Make invisible */
             transition: opacity 0.2s, width 0.2s, height 0.2s;
         }
 
         .custom-cursor.hovered .cursor-scan {
             width: 100px;
             height: 100px;
-            opacity: 0.8;
-            background: repeating-linear-gradient(to bottom,
-                    transparent 0px,
-                    transparent 2px,
-                    rgba(51, 255, 255, 0.3) 2px,
-                    rgba(51, 255, 255, 0.3) 4px);
+            opacity: 0; /* Keep invisible even on hover */
+            background: none; /* No scanlines */
         }
 
         @keyframes scan-scroll {
@@ -1735,7 +1733,7 @@
         .custom-cursor.hovered .cursor-inner {
             width: 60px;
             height: 60px;
-            background-color: rgba(51, 255, 51, 0.05);
+            background-color: transparent; /* Was rgba(51, 255, 51, 0.05) */
             border-color: var(--accent-cyan);
             border-style: dashed;
             animation: spin 4s linear infinite;
@@ -2054,9 +2052,10 @@
         }
 
         .arch-block:hover .arch-label {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+            text-shadow: none;
+            /* text-shadow: 0 0 10px currentColor, 0 0 20px currentColor; */
             transform: scale(1.1);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.95);
             box-shadow: 0 0 10px currentColor;
         }
 
@@ -2764,10 +2763,24 @@
             }
         }
 
+        @keyframes dash-crawl {
+            0% {
+                background-position: 0 bottom;
+            }
+
+            100% {
+                background-position: 20px bottom;
+            }
+        }
+
         h2 {
             display: block;
             color: var(--accent-amber);
-            border-bottom: 1px dashed var(--text-main);
+            /* border-bottom: 1px dashed var(--text-main); replaced with animated background */
+            background-image: linear-gradient(to right, rgba(255, 192, 51, 0.6) 0%, rgba(255, 192, 51, 0.6) 50%, transparent 50%, transparent 100%);
+            background-size: 20px 2px;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
             padding-bottom: 0.5rem;
             margin-top: 0;
             text-transform: uppercase;
@@ -2775,7 +2788,7 @@
             text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
             transition: text-shadow 0.2s;
             /* Force animation and ensure visibility */
-            animation: title-pulse 3s infinite ease-out !important;
+            animation: title-pulse 3s infinite ease-out, dash-crawl 1s linear infinite !important;
             will-change: text-shadow, color, filter, transform;
             position: relative;
             /* Ensure z-index works if needed */
@@ -2784,7 +2797,7 @@
 
         /* Ensure top-level H2s in sections have spacing from the yellow border */
         section.reveal>h2 {
-            margin-top: 40px;
+            margin-top: 80px;
             margin-left: 60px;
             margin-bottom: 20px;
             font-size: 2.2rem;
@@ -2799,7 +2812,8 @@
         }
 
         h2:hover {
-            text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-cyan);
+            /* text-shadow: 2px 0 var(--accent-red), -2px 0 var(--accent-cyan); */
+            text-shadow: none;
         }
 
         h3 {
@@ -6682,7 +6696,12 @@
 
                 .cassette-column h3 {
                     color: var(--accent-cyan);
-                    border-bottom: 1.5px dashed #0ff8;
+                    /* border-bottom: 1.5px dashed #0ff8; - animated */
+                    background-image: linear-gradient(to right, rgba(255, 192, 51, 0.5) 0%, rgba(255, 192, 51, 0.5) 50%, transparent 50%, transparent 100%);
+                    background-size: 20px 1.5px;
+                    background-repeat: repeat-x;
+                    background-position: 0 bottom;
+                    animation: dash-crawl 1s linear infinite;
                     padding-bottom: 15px;
                     margin-bottom: 25px;
                     width: 100%;
@@ -6701,7 +6720,7 @@
 
                 .cassette-label {
                     color: #fff;
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                     font-weight: bold;
                     margin-bottom: 4px;
                     letter-spacing: 0.04em;
@@ -6709,7 +6728,7 @@
 
                 .cassette-desc {
                     color: #bbb;
-                    font-size: 1.05rem;
+                    font-size: 1.2rem;
                     line-height: 1.6;
                     letter-spacing: 0.02em;
                 }
@@ -6778,7 +6797,7 @@
 
                 .cassette-footer-desc {
                     color: #88e0ff;
-                    font-size: 1rem;
+                    font-size: 1.2rem;
                 }
 
                 @media (max-width: 900px) {
@@ -6798,9 +6817,9 @@
                 }
             </style>
             <p class="protocol-text"
-                style="font-size: 1.5rem; letter-spacing: 3px; color: rgba(100, 255, 255, 0.9); text-shadow: 0 0 5px rgba(0, 255, 255, 0.4); display: inline-block; font-family: 'VT323', monospace; position: relative; text-align: left;">
+                style="font-size: 2.0rem; letter-spacing: 3px; color: rgba(100, 255, 255, 0.9); text-shadow: 0 0 5px rgba(0, 255, 255, 0.4); display: inline-block; font-family: 'VT323', monospace; position: relative; text-align: left;">
                 CORE_POWER_INTELLIGENT_UNIVERSE_INIT</p>
-            <p style="margin-top: 3rem; font-size: 1.2rem; letter-spacing: 2px; color: var(--text-main);">
+            <p style="margin-top: 3rem; font-size: 1.5rem; letter-spacing: 2px; color: var(--text-main);">
                 分享人 : <span class="author-glow" style="color: var(--accent-amber); font-weight: bold;">史蒂芬猴</span>
             </p>
         </section>
@@ -6855,7 +6874,7 @@
                     }
 
                     .industry-text {
-                        font-size: 0.9rem;
+                        font-size: 1.2rem;
                         color: #ccc;
                     }
 
@@ -6915,6 +6934,11 @@
                         font-weight: 900;
                         letter-spacing: 0.1em;
                         line-height: 1.1;
+                        /* Remove global h2 animated dashed line and yellow pulse */
+                        background: none !important;
+                        animation: none !important;
+                        border: none !important;
+                        padding-bottom: 0 !important;
                     }
 
                     .core-theme-subtitle {
@@ -6970,7 +6994,7 @@
                         <!-- Right Column: Future Industries -->
                         <div class="cassette-column" style="display: flex; flex-direction: column;">
                             <div
-                                style="text-align: center; margin-bottom: 20px; color: #fff; font-size: 1.1rem; border-bottom: 1px solid #444; padding-bottom: 10px;">
+                                style="text-align: center; margin-bottom: 20px; color: #fff; font-size: 1.5rem; border-bottom: 1px solid #444; padding-bottom: 10px;">
                                 前瞻布局未来产业，推动新的经济增长点
                             </div>
 
@@ -7115,7 +7139,7 @@
                             <i class="fas fa-server cassette-icon-amber"></i>
                             <div>
                                 <div class="cassette-label">算力集群</div>
-                                <div class="cassette-desc cassette-footer-desc">推出KUAE夸父智算集群，提供国产算力基座。</div>
+                                <div class="cassette-desc cassette-footer-desc">推出KUAE智算集群，提供国产算力基座。</div>
                             </div>
                         </div>
                         <div class="cassette-footer-block">
@@ -7148,21 +7172,21 @@
                             }
 
                             .arch-title-main {
-                                font-size: 1.2rem;
+                                font-size: 2.0rem;
                                 font-weight: bold;
                                 color: #fff;
                                 line-height: 1.2;
                             }
 
                             .arch-title-sub {
-                                font-size: 1.0rem;
+                                font-size: 1.5rem;
                                 font-weight: bold;
                                 color: #fff;
                                 line-height: 1.2;
                             }
 
                             .arch-title-en {
-                                font-size: 0.55rem;
+                                font-size: 1.0rem;
                                 color: #888;
                                 text-transform: uppercase;
                             }
@@ -7207,12 +7231,12 @@
                             }
 
                             .musa-title {
-                                font-size: 0.9rem;
+                                font-size: 1.2rem;
                                 font-weight: bold;
                             }
 
                             .musa-subtitle {
-                                font-size: 0.5rem;
+                                font-size: 1.0rem;
                                 color: #aaa;
                                 margin-top: 0px;
                             }
@@ -7225,7 +7249,7 @@
                             }
 
                             .musa-mic-box {
-                                font-size: 0.6rem;
+                                font-size: 0.8rem;
                                 border: 1px solid rgba(255, 255, 255, 0.2);
                                 height: 100%;
                                 justify-content: flex-start;
@@ -7249,7 +7273,7 @@
                                 align-items: center;
                                 justify-content: center;
                                 text-align: center;
-                                font-size: 0.5rem;
+                                font-size: 0.8rem;
                             }
 
                             .hg-dark-box {
@@ -7258,7 +7282,7 @@
                             }
 
                             .hg-title {
-                                font-size: 0.6rem;
+                                font-size: 0.8rem;
                                 color: #fff;
                                 font-weight: bold;
                                 margin-bottom: 2px;
@@ -7344,7 +7368,7 @@
 
                             .hg-core-row .hg-box {
                                 flex: 1;
-                                font-size: 0.4rem;
+                                font-size: 0.6rem;
                                 padding: 0;
                             }
                         </style>
@@ -7438,14 +7462,14 @@
                                                 <div class="hg-box" style="flex:1;">Smart Media Engine</div>
                                                 <div class="hg-mpc-grid">
                                                     <div class="hg-mpc-unit">
-                                                        <div style="font-size:0.35rem; text-align:center;">MPC</div>
-                                                        <div class="hg-box" style="font-size:0.35rem; padding:1px;">
+                                                        <div style="font-size:0.8rem; text-align:center;">MPC</div>
+                                                        <div class="hg-box" style="font-size:0.8rem; padding:1px;">
                                                             Sched</div>
                                                         <div class="hg-box" style="flex:1;">MPX</div>
                                                     </div>
                                                     <div class="hg-mpc-unit">
-                                                        <div style="font-size:0.35rem; text-align:center;">MPC</div>
-                                                        <div class="hg-box" style="font-size:0.35rem; padding:1px;">
+                                                        <div style="font-size:0.8rem; text-align:center;">MPC</div>
+                                                        <div class="hg-box" style="font-size:0.8rem; padding:1px;">
                                                             Sched</div>
                                                         <div class="hg-box" style="flex:1;">MPX</div>
                                                     </div>
@@ -7456,10 +7480,10 @@
                                             </div>
                                             <div class="hg-box hg-mem-ctrl">Mem Ctrl</div>
                                         </div>
-                                        <div class="hg-box hg-dark-box" style="font-size:0.45rem;">Network on Chip</div>
-                                        <div class="hg-box hg-dark-box" style="font-size:0.45rem;">Last Level Cache
+                                        <div class="hg-box hg-dark-box" style="font-size:0.8rem;">Network on Chip</div>
+                                        <div class="hg-box hg-dark-box" style="font-size:0.8rem;">Last Level Cache
                                         </div>
-                                        <div class="hg-box hg-dark-box" style="font-size:0.45rem;">MTLink</div>
+                                        <div class="hg-box hg-dark-box" style="font-size:0.8rem;">MTLink</div>
                                     </div>
 
                                     <!-- Right: MPX Detail -->
@@ -7470,7 +7494,7 @@
                                         <div class="hg-box">Task Distributor</div>
                                         <div class="hg-mp-row">
                                             <div class="hg-mp-col">
-                                                <div class="hg-title" style="text-align:center; font-size:0.45rem;">MP
+                                                <div class="hg-title" style="text-align:center; font-size:0.8rem;">MP
                                                 </div>
                                                 <div class="hg-box" style="padding:1px;">Sched</div>
                                                 <div class="hg-box" style="padding:1px;">Regs</div>
@@ -7483,7 +7507,7 @@
                                                 <div class="hg-box" style="padding:1px;">L1</div>
                                             </div>
                                             <div class="hg-mp-col">
-                                                <div class="hg-title" style="text-align:center; font-size:0.45rem;">MP
+                                                <div class="hg-title" style="text-align:center; font-size:0.8rem;">MP
                                                 </div>
                                                 <div class="hg-box" style="padding:1px;">Sched</div>
                                                 <div class="hg-box" style="padding:1px;">Regs</div>
@@ -7626,14 +7650,14 @@
                     }
 
                     .chip-title {
-                        font-size: 1.1rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
                         color: #fff;
                         margin-bottom: 2px;
                     }
 
                     .chip-sub {
-                        font-size: 0.5rem;
+                        font-size: 1.0rem;
                         color: #aaa;
                         line-height: 1.2;
                     }
@@ -7673,17 +7697,17 @@
                     }
 
                     .bar {
-                        width: 8px;
+                        width: 30px;
                         position: relative;
                         transition: height 1s;
                     }
 
                     .bar-label {
                         position: absolute;
-                        top: -12px;
+                        top: -20px;
                         left: 50%;
                         transform: translateX(-50%);
-                        font-size: 0.35rem;
+                        font-size: 1.0rem;
                         color: #ccc;
                         white-space: nowrap;
                     }
@@ -7700,7 +7724,7 @@
                     }
 
                     .hs-group-title {
-                        font-size: 0.45rem;
+                        font-size: 1.2rem;
                         color: #fff;
                         margin-top: 4px;
                         text-align: center;
@@ -7735,7 +7759,7 @@
                     }
 
                     .ls-big-desc {
-                        font-size: 0.5rem;
+                        font-size: 0.8rem;
                         margin-top: 2px;
                     }
 
@@ -7759,13 +7783,13 @@
                     }
 
                     .ls-val {
-                        font-size: 0.9rem;
+                        font-size: 1.5rem;
                         color: #fff;
                         font-weight: bold;
                     }
 
                     .ls-lbl {
-                        font-size: 0.35rem;
+                        font-size: 1.0rem;
                         color: #aaa;
                         white-space: nowrap;
                     }
@@ -7798,7 +7822,7 @@
                     }
 
                     .kuae-title {
-                        font-size: 1.0rem;
+                        font-size: 1.5rem;
                         color: #fff;
                         font-weight: bold;
                     }
@@ -7885,7 +7909,7 @@
                     }
 
                     .kuae-scale-text {
-                        font-size: 0.75rem;
+                        font-size: 1.0rem;
                         color: #81d4fa;
                         text-align: center;
                         font-style: italic;
@@ -7926,7 +7950,7 @@
                     }
 
                     .c256-top {
-                        font-size: 1.0rem;
+                        font-size: 1.2rem;
                         color: #78909c;
                         margin-bottom: 2px;
                         letter-spacing: 4px;
@@ -7936,7 +7960,7 @@
                     }
 
                     .c256-title {
-                        font-size: 2.6rem;
+                        font-size: 2.4rem;
                         font-weight: 900;
                         margin: 2px 0 8px 0;
                         line-height: 0.9;
@@ -7950,7 +7974,7 @@
 
                     .c256-sub {
                         margin-top: 2px;
-                        font-size: 0.85rem;
+                        font-size: 1.2rem;
                         color: #eceff1;
                         z-index: 2;
                     }
@@ -7958,12 +7982,12 @@
                     .c256-highlight {
                         color: #ff3d00;
                         font-weight: bold;
-                        font-size: 1.0rem;
+                        font-size: 1.2rem;
                     }
 
                     .c256-sub2 {
                         margin-top: 2px;
-                        font-size: 0.75rem;
+                        font-size: 1.0rem;
                         color: #90a4ae;
                         z-index: 2;
                     }
@@ -7986,7 +8010,7 @@
                     }
 
                     .eco-title {
-                        font-size: 1.4rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
                         color: #fff;
                         margin-bottom: 5px;
@@ -7994,7 +8018,7 @@
                     }
 
                     .eco-sub {
-                        font-size: 0.65rem;
+                        font-size: 1.2rem;
                         color: #fff;
                         margin-bottom: 10px;
                         font-weight: bold;
@@ -8008,7 +8032,7 @@
                     }
 
                     .eco-list {
-                        font-size: 0.75rem;
+                        font-size: 1.0rem;
                         color: #bbb;
                         line-height: 1.6;
                     }
@@ -8017,7 +8041,7 @@
                     <div class="product-slide-grid">
                         <!-- COL 1: Section I -->
                         <div class="product-col-left">
-                            <h3 style="margin-bottom:10px; padding-bottom:5px;">(一) 基于“花港”架构芯片</h3>
+                            <h3 style="margin-bottom:10px; padding-bottom:5px;">基于“花港”架构芯片</h3>
 
                             <div class="product-col-stack">
                                 <!-- 1. HuaShan -->
@@ -8088,7 +8112,7 @@
                                     </div>
                                     <div class="ls-content">
                                         <div class="ls-big-box">
-                                            <div class="ls-big-num">15<span style="font-size:1rem;">x</span></div>
+                                            <div class="ls-big-num">15<span style="font-size:1.2rem;">x</span></div>
                                             <div class="ls-big-desc">3A 游戏性能</div>
                                         </div>
                                         <div class="ls-grid">
@@ -8125,7 +8149,7 @@
 
                         <!-- COL 2: Section II -->
                         <div class="product-col-right">
-                            <h3 style="margin-bottom:10px; padding-bottom:5px;">(二) 集群与超节点</h3>
+                            <h3 style="margin-bottom:10px; padding-bottom:5px;">集群与超节点</h3>
 
                             <div class="product-col-stack">
                                 <div class="kuae-card product-row-1">
@@ -8297,7 +8321,7 @@
                     }
 
                     .partner-title {
-                        font-size: 1.1rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
                         color: #fff;
                         letter-spacing: 1px;
@@ -8352,7 +8376,7 @@
                     }
 
                     .boson-main-title {
-                        font-size: 0.9rem;
+                        font-size: 1.2rem;
                         color: #fff;
                         margin-bottom: 10px;
                         letter-spacing: 1px;
@@ -8412,7 +8436,7 @@
                     }
 
                     .b-label-top {
-                        font-size: 0.75rem;
+                        font-size: 1.0rem;
                         color: #eee;
                         text-align: center;
                         margin-bottom: 4px;
@@ -8431,7 +8455,7 @@
 
                     /* Middle Description */
                     .b-desc-mid {
-                        font-size: 0.6rem;
+                        font-size: 1.0rem;
                         color: #aaa;
                         text-align: center;
                         margin-bottom: 2px;
@@ -8527,7 +8551,7 @@
                     }
 
                     .b-label-hw {
-                        font-size: 0.65rem;
+                        font-size: 1.0rem;
                         color: #fff;
                         text-align: center;
                         margin-top: 3px;
@@ -8559,8 +8583,8 @@
                     }
 
                     .t-device {
-                        width: 45px;
-                        height: 75px;
+                        width: 55px;
+                        height: 85px;
                         background: linear-gradient(90deg, #37474f 0%, #546e7a 45%, #263238 100%);
                         border-radius: 8px 8px 4px 4px;
                         position: relative;
@@ -8791,7 +8815,7 @@
                     }
 
                     .t-label-main {
-                        font-size: 0.8rem;
+                        font-size: 1.0rem;
                         color: #fff;
                         margin-top: 5px;
                         font-weight: bold;
@@ -8799,7 +8823,7 @@
                     }
 
                     .t-label-sub {
-                        font-size: 0.6rem;
+                        font-size: 1.0rem;
                         color: #90a4ae;
                         white-space: nowrap;
                         margin-top: 2px;
@@ -8820,7 +8844,7 @@
                     }
 
                     .t-chip-label {
-                        font-size: 0.65rem;
+                        font-size: 1.0rem;
                         color: #ccc;
                         margin-bottom: 5px;
                         text-align: center;
@@ -8863,7 +8887,7 @@
 
                     .t-chip-text {
                         transform: rotate(-90deg);
-                        font-size: 0.6rem;
+                        font-size: 1.0rem;
                         color: #3e2723;
                         font-weight: bold;
                         letter-spacing: 1px;
@@ -9069,7 +9093,7 @@
                 </style>
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
-                        <h3>(一) 推理性能突破</h3>
+                        <h3>推理性能突破</h3>
                         <div class="cassette-row">
                             <i class="fas fa-handshake cassette-icon-cyan"></i>
                             <div>
@@ -9088,13 +9112,13 @@
                             <i class="fas fa-chart-line cassette-icon-cyan"></i>
                             <div>
                                 <div class="cassette-label">关键数据</div>
-                                <div class="cassette-desc">Preview: 4000 tokens/s<br>Code: 1000 tokens/s<br><span
-                                        style="font-size:0.7em; color:#666;">(Musa + vLLM)</span></div>
+                                <div class="cassette-desc">Prefill: 4000 tokens/s<br>DeCode: 1000 tokens/s<br><span
+                                        style="font-size:1.0em; color:#666;">(Musa + vLLM)</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="cassette-column">
-                        <h3>(二) 多领域合作</h3>
+                        <h3>多领域合作</h3>
                         <div class="partner-container">
 
                             <!-- 1. Boson Quantum (Strict Restore) -->
@@ -9314,20 +9338,18 @@
                                             box-shadow: 0 10px 0 #37474f;
                                         }
 
-                                        .z-label-top {
-                                            font-size: 0.5rem;
-                                            color: #cfd8dc;
-                                            margin-bottom: 5px;
-                                            text-align: center;
-                                            line-height: 1.2;
-                                        }
-
-                                        /* Arrow */
+                    .z-label-top {
+                        font-size: 1.0rem;
+                        color: #cfd8dc;
+                        margin-bottom: 5px;
+                        text-align: center;
+                        line-height: 1.2;
+                    }                                        /* Arrow */
                                         .z-main-arrow {
                                             color: #ff3d00;
                                             font-size: 1.2rem;
                                             animation: pulse-h 1.5s infinite;
-                                            margin-right: 5px;
+                                            margin-right: 10px;
                                             margin-top: 15px;
                                         }
 
@@ -9343,7 +9365,7 @@
                                         }
 
                                         .z-plat-title {
-                                            font-size: 0.5rem;
+                                            font-size: 1.0rem;
                                             color: #fff;
                                             margin-bottom: 5px;
                                             text-align: center;
@@ -9377,7 +9399,7 @@
 
                                         .z-trap span {
                                             transform: skewX(20deg);
-                                            font-size: 0.45rem;
+                                            font-size: 1.0rem;
                                             color: #e1f5fe;
                                             white-space: nowrap;
                                             font-weight: normal;
@@ -9401,7 +9423,7 @@
 
                                         .z-layer-mid span {
                                             transform: skewX(20deg);
-                                            font-size: 0.55rem;
+                                            font-size: 1.0rem;
                                             color: #fff;
                                             font-weight: bold;
                                             white-space: nowrap;
@@ -9594,7 +9616,7 @@
                     }
 
                     .gp-desc {
-                        font-size: 0.75rem;
+                        font-size: 1.2rem;
                         color: #aaa;
                         text-align: center;
                         line-height: 1.6;
@@ -9647,6 +9669,8 @@
                             </div>
                         </div>
 
+                    </div>
+                </div>
                         <!-- NEW: Roadmap Stairs Visualization -->
                         <style>
                             .roadmap-stairs {
@@ -9713,7 +9737,7 @@
                             }
 
                             .step-list {
-                                font-size: 0.9rem;
+                                font-size: 1.2rem;
                                 color: #ccc;
                                 text-align: center;
                                 line-height: 1.4;
@@ -9759,7 +9783,7 @@
                                     <span>Vulkan 1.3</span>
                                     <span>DXR 1.0/1.1</span>
                                     <span>MTAGR 1.0</span>
-                                    <span>VSR</span>
+                                    <!-- <span>VSR</span> -->
                                 </div>
                             </div>
                             <div class="roadmap-step step-2026">
@@ -9773,8 +9797,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -9836,7 +9858,7 @@
 
                     .phys-step-title {
                         font-family: inherit;
-                        font-size: 1.1rem;
+                        font-size: 1.5rem;
                         font-weight: bold;
                         color: #fff;
                         margin-bottom: 8px;
@@ -9844,7 +9866,7 @@
 
                     .phys-step-desc {
                         font-family: inherit;
-                        font-size: 0.8rem;
+                        font-size: 1.2rem;
                         color: #aaa;
                         line-height: 1.4;
                         margin-bottom: 15px;
@@ -9951,7 +9973,7 @@
 
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
-                        <div class="soc-header">长江 智能 SoC 芯片</div>
+                        <div class="soc-header">长江智能 SoC 芯片</div>
 
                         <div class="soc-diagram-container">
                             <style>
@@ -10012,7 +10034,7 @@
                                 }
 
                                 .soc-feat-label {
-                                    font-size: 0.6rem;
+                                    font-size: 1.2rem;
                                     color: #ddd;
                                     white-space: nowrap;
                                     font-weight: bold;
@@ -10043,7 +10065,7 @@
                                 /* Center ISP if odd */
 
                                 .soc-mod-title {
-                                    font-size: 1rem;
+                                    font-size: 1.2rem;
                                     font-weight: bold;
                                     color: #fff;
                                     text-align: center;
@@ -10052,7 +10074,7 @@
                                 }
 
                                 .soc-mod-desc {
-                                    font-size: 0.65rem;
+                                    font-size: 1.0rem;
                                     color: #bbb;
                                     text-align: center;
                                     line-height: 1.4;
@@ -10068,7 +10090,7 @@
                                 }
 
                                 .soc-footer-line {
-                                    font-size: 0.7rem;
+                                    font-size: 1.1rem;
                                     color: #ccc;
                                     margin-bottom: 4px;
                                     font-weight: bold;
@@ -10158,13 +10180,13 @@
                             style="background: rgba(0,0,0,0.5); border: 2px solid #b71c1c; border-radius: 6px; padding: 0; overflow: hidden; margin-bottom: 10px;">
                             <!-- Header -->
                             <div
-                                style="background: linear-gradient(to bottom, #b71c1c, #7f0000); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 1.3rem; letter-spacing: 1px;">
+                                style="background: linear-gradient(to bottom, #b71c1c, #7f0000); color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 1.5rem; letter-spacing: 1px;">
                                 MT Lambda
                             </div>
 
                             <!-- Lab -->
                             <div
-                                style="background: #222; text-align: center; padding: 10px; border-bottom: 1px solid #444; color: #eee; font-size: 1.1rem;">
+                                style="background: #222; text-align: center; padding: 10px; border-bottom: 1px solid #444; color: #eee; font-size: 1.3rem;">
                                 MT Lambda-Lab
                             </div>
 
@@ -10173,11 +10195,11 @@
                                 <!-- Left: Sim & Verse -->
                                 <div style="flex: 2; display: flex; flex-direction: column;">
                                     <div
-                                        style="background: #1a1a1a; text-align: center; padding: 10px; border-bottom: 1px solid #333; color: #ddd; font-size: 1.0rem;">
+                                        style="background: #1a1a1a; text-align: center; padding: 10px; border-bottom: 1px solid #333; color: #ddd; font-size: 1.2rem;">
                                         MT Lambda-Sim
                                     </div>
                                     <div
-                                        style="background: #151515; text-align: center; padding: 10px; color: #ccc; font-size: 1.0rem;">
+                                        style="background: #151515; text-align: center; padding: 10px; color: #ccc; font-size: 1.2rem;">
                                         MTVERSE
                                     </div>
                                 </div>
@@ -10186,29 +10208,29 @@
                                 <div
                                     style="flex: 1; border-left: 1px solid #444; display: flex; flex-direction: column;">
                                     <div
-                                        style="background: #333; color: #fff; text-align: center; font-size: 0.8rem; padding: 4px;">
+                                        style="background: #333; color: #fff; text-align: center; font-size: 1.0rem; padding: 4px;">
                                         AI</div>
                                     <div
                                         style="flex: 1; display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: #444; padding: 1px;">
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             Data Synthesis</div>
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             VLA</div>
 
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             World Model</div>
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             RL</div>
 
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             Torch-MUSA</div>
                                         <div
-                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #ddd;">
+                                            style="background: #2a2a2a; display: flex; align-items: center; justify-content: center; font-size: 1.0rem; color: #ddd;">
                                             IL</div>
                                     </div>
                                 </div>
@@ -10220,19 +10242,19 @@
                                 <div
                                     style="flex: 1; border-right: 1px solid #444; display: flex; flex-direction: column;">
                                     <div
-                                        style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">
+                                        style="background: #222; color: #ccc; text-align: center; font-size: 1.2rem; padding: 5px; border-bottom: 1px solid #333;">
                                         Physics</div>
                                     <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
                                         <div
-                                            style="flex: 1; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                            style="flex: 1; background: #37474f; font-size: 1.2rem; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px;">
                                             MuJoCo<br>Warp-musa
                                         </div>
                                         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
                                             <div
-                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                style="background: #37474f; font-size: 1.0rem; color: #fff; padding: 5px; text-align: center;">
                                                 Newton-musa</div>
                                             <div
-                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                style="background: #37474f; font-size: 1.0rem; color: #fff; padding: 5px; text-align: center;">
                                                 MT AlphaCore</div>
                                         </div>
                                     </div>
@@ -10241,21 +10263,21 @@
                                 <!-- Graphics -->
                                 <div style="flex: 1; display: flex; flex-direction: column;">
                                     <div
-                                        style="background: #222; color: #ccc; text-align: center; font-size: 0.9rem; padding: 5px; border-bottom: 1px solid #333;">
+                                        style="background: #222; color: #ccc; text-align: center; font-size: 1.2rem; padding: 5px; border-bottom: 1px solid #333;">
                                         Graphics</div>
                                     <div style="display: flex; gap: 2px; padding: 5px; background: #111;">
                                         <div
-                                            style="flex: 1.5; background: #37474f; font-size: 0.8rem; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px;">
+                                            style="flex: 1.5; background: #37474f; font-size: 1.0rem; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px;">
                                             <div style="font-weight: bold;">MT Photon</div>
-                                            <div style="font-size: 0.6rem; opacity: 0.8;">Ray Tracing &<br>Hybrid
+                                            <div style="font-size: 1.0rem; opacity: 0.8;">Ray Tracing &<br>Hybrid
                                                 Rendering</div>
                                         </div>
                                         <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
                                             <div
-                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                style="background: #37474f; font-size: 1.0rem; color: #fff; padding: 5px; text-align: center;">
                                                 MTSS</div>
                                             <div
-                                                style="background: #37474f; font-size: 0.8rem; color: #fff; padding: 5px; text-align: center;">
+                                                style="background: #37474f; font-size: 1.0rem; color: #fff; padding: 5px; text-align: center;">
                                                 3DGS</div>
                                         </div>
                                     </div>
@@ -10369,7 +10391,7 @@
                     </div>
 
                     <!-- Vertical Connections Layer -->
-                    <div class="mt-vertical-layer">
+                    <!-- <div class="mt-vertical-layer">
                         <div class="mt-v-conn start-plan">
                             <div class="mt-v-text text-red">子任务下发</div>
                             <div class="mt-v-line down red-glow"></div>
@@ -10378,7 +10400,7 @@
                             <div class="mt-v-line up red-glow"></div>
                             <div class="mt-v-text text-red" style="margin-top: 5px;">执行反馈</div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- 2. Edge Section -->
                     <div class="mt-robot-section edge-section">
@@ -10465,7 +10487,7 @@
                         }
 
                         .mt-side-title {
-                            font-size: 1rem;
+                            font-size: 1.3rem;
                             color: #fff;
                             margin-bottom: 10px;
                             font-weight: bold;
@@ -10528,14 +10550,14 @@
                         }
 
                         .mt-dev-name {
-                            font-size: 0.8rem;
+                            font-size: 1.2rem;
                             color: #fff;
                             font-weight: bold;
                             margin-bottom: 4px;
                         }
 
                         .mt-dev-desc {
-                            font-size: 0.6rem;
+                            font-size: 1.0rem;
                             color: #888;
                             line-height: 1.3;
                         }
@@ -10559,13 +10581,13 @@
                         }
 
                         .mt-flow-text-top {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
                             text-align: center;
                             margin-bottom: 2px;
                         }
 
                         .mt-flow-text-bot {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
                             text-align: center;
                             margin-top: 2px;
                         }
@@ -10630,7 +10652,7 @@
                         }
 
                         .mt-agent-title {
-                            font-size: 0.8rem;
+                            font-size: 1.2rem;
                             color: #fff;
                             margin-bottom: 6px;
                             text-align: center;
@@ -10643,7 +10665,7 @@
                         }
 
                         .mt-mod-row span {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
                             color: #aaa;
                             background: #333;
                             padding: 2px 4px;
@@ -10667,13 +10689,13 @@
                         }
 
                         .mt-conn-label {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
                             text-align: center;
                             margin-bottom: 2px;
                         }
 
                         .mt-conn-label-bot {
-                            font-size: 0.6rem;
+                            font-size: 0.8rem;
                             text-align: center;
                             margin-top: 2px;
                         }
@@ -10723,7 +10745,7 @@
                         }
 
                         .mt-func-head {
-                            font-size: 0.9rem;
+                            font-size: 1.2rem;
                             color: #ddd;
                             margin-bottom: 8px;
                             text-align: center;
@@ -10789,7 +10811,7 @@
                         .mt-v-line.up::before {
                             content: '';
                             position: absolute;
-                            top: -4px;
+                            top: 4px;
                             right: -3px;
                             border-bottom: 6px solid #ff5252;
                             border-left: 4px solid transparent;
@@ -10808,8 +10830,17 @@
             <div class="cassette-single-card">
                 <div class="cassette-internal-grid">
                     <div class="cassette-column">
-                        <h3>“摩尔学院”</h3>
+                        <div class="mta-section-header">“摩尔学院”</div>
                         <style>
+                            .mta-section-header {
+                                text-align: center;
+                                font-size: 1.8rem;
+                                color: #fff;
+                                margin-bottom: 30px;
+                                letter-spacing: 2px;
+                                font-weight: bold;
+                            }
+
                             .mta-diagram-container {
                                 width: 100%;
                                 padding: 25px 0;
@@ -10856,9 +10887,9 @@
                             }
 
                             .mta-platform-text {
-                                font-size: 0.65rem;
+                                font-size: 0.8rem;
                                 color: #fff;
-                                margin-bottom: 5px;
+                                margin-bottom: -2px;
                                 text-shadow: 0 2px 2px #000;
                             }
 
@@ -10928,13 +10959,13 @@
                             }
 
                             .mta-title-main {
-                                font-size: 1.3rem;
+                                font-size: 1.4rem;
                                 font-weight: bold;
                                 letter-spacing: 1px;
                             }
 
                             .mta-title-sub {
-                                font-size: 0.4rem;
+                                font-size: 0.8rem;
                                 color: #aaa;
                                 letter-spacing: 0.5px;
                                 margin-top: 2px;
@@ -10944,7 +10975,7 @@
                                 display: flex;
                                 justify-content: space-between;
                                 width: 95%;
-                                font-size: 0.6rem;
+                                font-size: 1.0rem;
                                 color: #ccc;
                             }
 
@@ -11047,7 +11078,7 @@
 
                             .mta-next-header {
                                 text-align: center;
-                                font-size: 1.1rem;
+                                font-size: 1.4rem;
                                 color: #fff;
                                 margin-bottom: 15px;
                                 font-weight: bold;
@@ -11075,7 +11106,7 @@
                             }
 
                             .ie-sub-title {
-                                font-size: 0.8rem;
+                                font-size: 1.2rem;
                                 color: #ddd;
                                 margin-bottom: 15px;
                                 text-align: center;
@@ -11093,14 +11124,14 @@
 
                             .ie-uni-name {
                                 color: #fff;
-                                font-size: 0.6rem;
+                                font-size: 1.0rem;
                                 font-weight: bold;
                                 margin-bottom: 2px;
                             }
 
                             .ie-uni-desc {
                                 color: #888;
-                                font-size: 0.45rem;
+                                font-size: 0.8rem;
                             }
 
                             .ie-stats-row {
@@ -11155,7 +11186,7 @@
                             }
 
                             .musa-card-title {
-                                font-size: 0.8rem;
+                                font-size: 1.2rem;
                                 color: #fff;
                                 margin-bottom: 8px;
                                 font-weight: bold;
@@ -11169,7 +11200,7 @@
                             }
 
                             .musa-card-desc {
-                                font-size: 0.4rem;
+                                font-size: 0.8rem;
                                 color: #aaa;
                                 line-height: 1.4;
                                 text-align: left;
@@ -11262,7 +11293,7 @@
                         </div>
                     </div>
                     <div class="cassette-column">
-                        <h3>个人开发者装备</h3>
+                        <div class="mta-section-header">个人开发者装备</div>
                         <!-- MTT AI Book Section -->
                         <style>
                             .mtt-book-section {
@@ -11323,7 +11354,7 @@
                             }
 
                             .mtt-sys-title {
-                                font-size: 0.9rem;
+                                font-size: 1.2rem;
                                 font-weight: bold;
                                 color: #fff;
                                 line-height: 1.2;
@@ -11333,7 +11364,7 @@
                             }
 
                             .mtt-sys-subtitle {
-                                font-size: 0.7rem;
+                                font-size: 1.0rem;
                                 color: #ccc;
                                 margin-bottom: 10px;
                                 z-index: 2;
@@ -11363,7 +11394,7 @@
                                 background: rgba(0, 0, 0, 0.5);
                                 color: #ddd;
                                 padding: 4px 2px;
-                                font-size: 0.45rem;
+                                font-size: 1.0rem;
                                 text-align: center;
                                 backdrop-filter: blur(2px);
                                 transition: all 0.3s ease;
@@ -11411,7 +11442,7 @@
                             }
 
                             .mtt-env-title {
-                                font-size: 0.8rem;
+                                font-size: 1.4rem;
                                 text-align: center;
                                 color: #fff;
                                 margin-bottom: 12px;
@@ -11435,7 +11466,7 @@
                                 display: flex;
                                 align-items: center;
                                 gap: 6px;
-                                font-size: 0.55rem;
+                                font-size: 1.2rem;
                                 font-weight: bold;
                                 color: #fff;
                                 margin-bottom: 2px;
@@ -11450,7 +11481,7 @@
                             }
 
                             .mtt-feature-desc {
-                                font-size: 0.4rem;
+                                font-size: 1.0rem;
                                 color: #999;
                                 padding-left: 10px;
                                 line-height: 1.35;
@@ -11480,7 +11511,7 @@
                             <!-- Diagram 2 -->
                             <div class="mtt-env-container">
                                 <div class="mtt-env-title">开箱即用的 AI 开发环境<br><span
-                                        style="font-size: 0.6rem; color: #888; font-weight: normal;">快速搭建智能体</span>
+                                        style="font-size: 1.2rem; color: #888; font-weight: normal;">快速搭建智能体</span>
                                 </div>
                                 <div class="mtt-feature-list">
                                     <div class="mtt-feature-item">
@@ -11539,7 +11570,7 @@
                             }
 
                             .musa-main-title {
-                                font-size: 1.1rem;
+                                font-size: 1.4rem;
                                 font-weight: bold;
                                 color: #fff;
                             }
@@ -11547,14 +11578,14 @@
                             .musa-badge {
                                 background: #b71c1c;
                                 color: #fff;
-                                font-size: 0.6rem;
+                                font-size: 1.2rem;
                                 padding: 2px 8px;
                                 border-radius: 4px;
                                 font-weight: bold;
                             }
 
                             .musa-sub-title {
-                                font-size: 0.75rem;
+                                font-size: 1.0rem;
                                 color: #aaa;
                             }
 
@@ -11567,7 +11598,7 @@
                             }
 
                             .musa-col-title {
-                                font-size: 0.9rem;
+                                font-size: 1.2rem;
                                 font-weight: bold;
                                 color: #fff;
                                 border-bottom: 3px solid #b71c1c;
@@ -11583,7 +11614,7 @@
                             }
 
                             .musa-metric-label {
-                                font-size: 0.7rem;
+                                font-size: 1.0rem;
                                 color: #ccc;
                                 margin-bottom: 2px;
                             }
@@ -11596,7 +11627,7 @@
                             }
 
                             .musa-list-item {
-                                font-size: 0.7rem;
+                                font-size: 0.9rem;
                                 color: #ccc;
                                 margin-bottom: 6px;
                                 padding-left: 12px;
@@ -11614,7 +11645,7 @@
                             }
 
                             .musa-tag {
-                                font-size: 0.5rem;
+                                font-size: 0.9rem;
                                 color: #888;
                                 margin-left: 5px;
                                 border: 1px solid #444;
@@ -11694,7 +11725,7 @@
                         <div class="cassette-row">
                             <i class="fas fa-desktop cassette-icon-amber"></i>
                             <div>
-                                <div class="cassette-label">MTTAIQ 工作站</div>
+                                <div class="cassette-label">MTT AIQube 工作站</div>
                                 <div class="cassette-desc">个人数据中心 (办公室/家庭)，支持 Cube 开发。</div>
                             </div>
                         </div>
@@ -11731,7 +11762,7 @@
                         }
 
                         .achi-title {
-                            font-size: 0.8rem;
+                            font-size: 1.3rem;
                             color: #fff;
                             font-family: "Microsoft YaHei", sans-serif;
                             font-weight: bold;
@@ -12014,7 +12045,7 @@
                     <div style="border-top: 2px dashed #555; padding-top: 2rem; margin-top: 2rem;">
                         <h3 style="text-align: center; border: none; font-size: 2rem; color: var(--accent-amber);">
                             企业愿景</h3>
-                        <p style="font-size: 1.4rem; color: #ddd; line-height: 1.6;">
+                        <p style="font-size: 1.3rem; color: #ddd; line-height: 1.6;">
                             为国内科技开发者提供更好的创新工具与装备<br>
                             持续<span
                                 style="color: var(--accent-green); font-weight: bold; font-size: 1.6rem;">“为美好世界加速”</span><br>
@@ -12041,13 +12072,14 @@
             <div class="glitch-wrapper">
                 <h1 class="glitch" data-text="THANKS FOR WATCHING">THANKS FOR WATCHING</h1>
             </div>
-            <div class="sub-glitch">MOORE THREADS & Amazing Seasun // AI COMPUTING</div>
+            <div class="sub-glitch">MOORE THREADS & AmazingSeasun Game // AI COMPUTING</div>
 
             <div class="shutdown-sequence">
                 <div class="cmd-line">> INITIATING SYSTEM SHUTDOWN...</div>
                 <div class="cmd-line">> SAVING SESSION DATA... [OK]</div>
                 <div class="cmd-line">> DISCONNECTING NEURAL LINK... [OK]</div>
                 <div class="cmd-line">> TERMINATING...</div>
+                <div class="cmd-line">> WE ARE STILL PIONEERS. WE ARE BARELY BEGUN...</div>
                 <div class="blinking-cursor">_</div>
             </div>
 
@@ -12257,6 +12289,11 @@
                 animation: type-cmd 0.8s steps(18, end) 6.1s forwards, cmd-caret 0.8s step-end 6.1s;
             }
 
+            .cmd-line:nth-child(5) {
+                --target-width: 50ch;
+                animation: type-cmd 1.8s steps(37, end) 7.1s forwards, cmd-caret 1.8s step-end 4.2s;
+            }
+
             @keyframes type-cmd {
                 from {
                     width: 0;
@@ -12314,7 +12351,7 @@
                 height: 100%;
                 background: #00ff00;
                 transform: translateX(-100%);
-                animation: load-progress 5s ease-in-out forwards;
+                animation: load-progress 8s ease-in-out forwards;
                 animation-delay: 1s;
             }
 
@@ -21285,7 +21322,8 @@
             el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
         });
 
-        // 2. Optimized 3D Tilt Effect for Cards
+        // 2. Optimized 3D Tilt Effect for Cards - DISABLED for text clarity
+        /*
         document.querySelectorAll('.reveal, .modal-card').forEach(card => {
             card.style.transformStyle = 'preserve-3d';
             card.style.perspective = '1000px';
@@ -21333,6 +21371,7 @@
                 bounds = null; // Clear cache
             });
         });
+        */
 
         // 3. Text Scramble Effect
         class TextScramble {
@@ -21394,10 +21433,12 @@
             const fx = new TextScramble(el);
             let originalText = el.innerText;
 
-            // Scramble on hover
+            // Scramble on hover - DISABLED for clarity
+            /*
             el.addEventListener('mouseenter', () => {
                 fx.setText(originalText);
             });
+            */
         });
 
         // 5. Architecture Modals Logic
@@ -22447,11 +22488,17 @@
         /* [USER REQUEST]: Special Adjustments for First 12 Pages */
 
         /* 1. Consistent Paragraph Titles (h3) */
-        .container>section.reveal:nth-of-type(-n+12) h3 {
+        .container>section.reveal:nth-of-type(-n+12) h3,
+        .slide-inference h3 {
             font-size: 1.8rem !important;
             color: var(--accent-amber) !important;
             text-shadow: 0 0 10px rgba(255, 193, 7, 0.4) !important;
-            border-bottom: 2px dashed rgba(255, 193, 7, 0.4) !important;
+            /* border-bottom: 2px dashed rgba(255, 193, 7, 0.4) !important; replaced with animated */
+            background-image: linear-gradient(to right, rgba(255, 193, 7, 0.4) 0%, rgba(255, 193, 7, 0.4) 50%, transparent 50%, transparent 100%) !important;
+            background-size: 20px 2px !important;
+            background-repeat: repeat-x !important;
+            background-position: 0 bottom !important;
+            animation: dash-crawl 1s linear infinite !important;
             padding-bottom: 0.6rem !important;
             margin-top: 1.5rem !important;
             margin-bottom: 1.5rem !important;
@@ -22490,17 +22537,17 @@
         }
 
         /* 3. Mouse Interaction: Hover Tilt & Glow */
-        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card,
-        .container>section.reveal:nth-of-type(-n+12) .fs-card,
-        .container>section.reveal:nth-of-type(-n+12) .content-grid>div,
-        .container>section.reveal:nth-of-type(-n+12) .arch-container {
+        .container>section.reveal .cassette-single-card,
+        .container>section.reveal .fs-card,
+        .container>section.reveal .content-grid>div,
+        .container>section.reveal .arch-container {
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card:hover,
-        .container>section.reveal:nth-of-type(-n+12) .fs-card:hover,
-        .container>section.reveal:nth-of-type(-n+12) .content-grid>div:hover,
-        .container>section.reveal:nth-of-type(-n+12) .arch-container:hover {
+        .container>section.reveal .cassette-single-card:hover,
+        .container>section.reveal .fs-card:hover,
+        .container>section.reveal .content-grid>div:hover,
+        .container>section.reveal .arch-container:hover {
             transform: translateY(-5px) scale(1.01);
             box-shadow: 0 0 35px rgba(33, 255, 255, 0.3), inset 0 0 20px rgba(33, 255, 255, 0.1) !important;
             border-color: var(--accent-cyan) !important;
@@ -22528,25 +22575,26 @@
         }
 
         /* Apply to main containers */
-        .container>section.reveal:nth-of-type(-n+12) .cassette-single-card,
-        .container>section.reveal:nth-of-type(-n+12) .fs-card,
-        .container>section.reveal:nth-of-type(-n+12) .content-grid>div,
-        .container>section.reveal:nth-of-type(-n+12) .arch-container {
-            animation: metallic-pulse-periodic 5s infinite ease-in-out;
+        .container>section.reveal .cassette-single-card,
+        .container>section.reveal .fs-card,
+        .container>section.reveal .content-grid>div,
+        .container>section.reveal .arch-container {
+            /* removed animation: metallic-pulse-periodic */
             border-width: 1px;
             border-style: solid;
+            border-color: #444; /* Default border color */
         }
 
         /* Staggered animations for cards */
-        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(1) {
+        .container>section.reveal .fs-card:nth-child(1) {
             animation-delay: 0.5s;
         }
 
-        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(2) {
+        .container>section.reveal .fs-card:nth-child(2) {
             animation-delay: 2.0s;
         }
 
-        .container>section.reveal:nth-of-type(-n+12) .fs-card:nth-child(3) {
+        .container>section.reveal .fs-card:nth-child(3) {
             animation-delay: 3.5s;
         }
     </style>
